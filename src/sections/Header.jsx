@@ -100,7 +100,7 @@ export const Header = () => {
         ></div>
         
         {/* mobile menu (professional slide-in drawer) */}
-       <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-b from-black via-gray-900 to-black text-white 
+       <div className={`fixed top-0 right-0 h-full w-72 max-w-[80vw] bg-gradient-to-b from-black via-gray-900 to-black text-white 
         transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
         transition-transform duration-300 ease-in-out z-50 shadow-2xl border-l border-gray-700 md:hidden`}>
           
