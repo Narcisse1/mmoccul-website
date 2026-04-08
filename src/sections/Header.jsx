@@ -33,22 +33,22 @@ export const Header = () => {
 
   return (
     <header 
-        className='py-3 lg:py-4 lg:px-[80px] px-5 fixed top-0 left-0 w-full z-50 shadow-2xl backdrop-blur-md'
+        className='py-3 lg:py-4 lg:px-[80px] px-5 fixed top-0 left-0 w-full z-50 shadow-2xl backdrop-blur-md overflow-hidden'
         style={{
             background: 'linear-gradient(270deg, #0f172a, #1e3a5f, #0f172a)',
             backgroundSize: '200% 200%',
             animation: 'gradientBG 8s ease infinite'
         }}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center max-w-full">
         {/* Logo with White Background */}
-        <div className="w-14 lg:w-18 bg-white rounded-xl p-1.5 shadow-lg flex-shrink-0">
+        <div className="w-12 lg:w-16 bg-white rounded-xl p-1.5 shadow-lg flex-shrink-0">
           <img src={logo} alt="Mmoccul Logo" className="w-full h-auto" />
         </div>
         {/* logo ends  */}
 
         {/* hamburger menu button (mobile only starts)  */}
-        <button className='text-white text-2xl md:hidden p-3 hover:bg-white/10 rounded-lg transition-colors flex-shrink-0' onClick={() => setMenuOpen (!menuOpen)}>
+        <button className='text-white text-2xl md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors flex-shrink-0' onClick={() => setMenuOpen (!menuOpen)}>
           {menuOpen ? <IoCloseSharp /> : <FaBars />}
         </button>
 
