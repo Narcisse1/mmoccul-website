@@ -166,8 +166,8 @@ export const Hero = () => {
       </div>
       
       {/* Main Content */}
-      <div className='relative z-10 min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8'>
-        <div className='text-center max-w-4xl mx-auto w-full'>
+        <div className='relative z-10 min-h-[calc(100vh-80px)] flex items-center justify-center px-5 sm:px-6 lg:px-8'>
+          <div className='text-center max-w-7xl mx-auto w-full'>
           {/* Category Tag */}
           <div data-aos="fade-up" data-aos-delay="100">
             <span className='inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-4 sm:mb-6'>

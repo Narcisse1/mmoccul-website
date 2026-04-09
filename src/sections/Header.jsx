@@ -33,22 +33,22 @@ export const Header = () => {
 
   return (
     <header 
-        className='py-2 lg:py-4 lg:px-[80px] px-4 fixed top-0 left-0 w-full z-50 shadow-2xl backdrop-blur-md overflow-hidden'
+        className='py-3 lg:py-4 lg:px-8 px-5 fixed top-0 left-0 w-full z-50 shadow-2xl backdrop-blur-md'
         style={{
             background: 'linear-gradient(270deg, #0f172a, #1e3a5f, #0f172a)',
             backgroundSize: '200% 200%',
             animation: 'gradientBG 8s ease infinite'
         }}
     >
-      <div className="flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo with White Background */}
-        <div className="w-10 lg:w-16 bg-white rounded-lg lg:rounded-xl p-1 lg:p-1.5 shadow-lg flex-shrink-0">
+        <div className="w-14 lg:w-18 bg-white rounded-xl p-1.5 shadow-lg">
           <img src={logo} alt="Mmoccul Logo" className="w-full h-auto" />
         </div>
         {/* logo ends  */}
 
         {/* hamburger menu button (mobile only starts)  */}
-        <button className='text-white text-xl lg:text-2xl md:hidden p-1.5 lg:p-2 hover:bg-white/10 rounded-lg transition-colors flex-shrink-0' onClick={() => setMenuOpen (!menuOpen)}>
+        <button className='text-white text-2xl md:hidden p-3 hover:bg-white/10 rounded-lg transition-colors' onClick={() => setMenuOpen (!menuOpen)}>
           {menuOpen ? <IoCloseSharp /> : <FaBars />}
         </button>
 
@@ -81,7 +81,7 @@ export const Header = () => {
         </nav>
         
         {/* Create Account Button - Professional Design */}
-        <div className='hidden md:block flex-shrink-0'>
+        <div className='hidden md:block'>
           <RouterLink
             to="/create-account"
             className='inline-flex items-center gap-2 bg-themegreen text-white font-semibold text-sm py-2.5 px-7 rounded-lg hover:bg-green-600 transition-all duration-300 shadow-md hover:shadow-lg'
@@ -93,16 +93,10 @@ export const Header = () => {
           </RouterLink>
         </div>
       </div>
-        {/* Backdrop overlay for mobile menu */}
-        <div 
-          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          onClick={() => setMenuOpen(false)}
-        ></div>
-        
         {/* mobile menu (professional slide-in drawer) */}
-       <div className={`fixed top-0 right-0 h-full w-72 max-w-[80vw] bg-gradient-to-b from-black via-gray-900 to-black text-white 
+       <div className={`fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-black via-gray-900 to-black text-white 
         transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
-        transition-transform duration-300 ease-in-out z-50 shadow-2xl border-l border-gray-700 md:hidden`}>
+        transition-transform duration-300 ease-in-out z-40 shadow-2xl border-l border-gray-700`}>
           
           {/* Header Section */}
           <div className='flex items-center justify-between p-6 border-b border-gray-700 bg-gradient-to-r from-gray-900 to-black'>
