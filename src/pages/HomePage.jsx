@@ -1,9 +1,9 @@
 import React from 'react';
 import { About } from "../sections/About";
-import { Clients } from "../sections/Clients";
 import { Hero } from "../sections/Hero";
 import { Header } from "../sections/Header";
 import { Footer } from "../sections/Footer";
+import { EasyProcess } from "../sections/EasyProcess";
 
 export const HomePage = () => {
   return (
@@ -11,7 +11,7 @@ export const HomePage = () => {
       <Header />
       <Hero />
       <About />
-      <Clients />
+      <EasyProcess />
       <Footer />
     </>
   );
