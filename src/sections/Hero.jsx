@@ -7,9 +7,6 @@ import {
   Headphones,
   Smartphone,
   Users,
-  Send,
-  CreditCard,
-  Landmark,
   Receipt,
 } from 'lucide-react'
 
@@ -18,7 +15,6 @@ import heroBg1 from '../assets/assets3/savings.png'
 import heroBg2 from '../assets/assets3/customer_service.png'
 import heroBg3 from '../assets/assets3/mobile_banking.png'
 import heroBg4 from '../assets/assets3/community.png'
-
 const slidesData = [
   {
     id: 1,
@@ -68,21 +64,24 @@ const slidesData = [
 
 const services = [
   {
-    title: 'Money Transfer',
-    icon: Send,
+    title: 'Create Account',
+    icon: Users,
+    link: '/create-account',
   },
   {
-    title: 'Withdrawal',
-    icon: CreditCard,
-    active: true,
+    title: 'Customer Service',
+    icon: Headphones,
+    link: '/contact',
   },
   {
-    title: 'Bank Deposit',
-    icon: Landmark,
+    title: 'Savings Account',
+    icon: Wallet,
+    link: '/services',
   },
   {
     title: 'Online Payment',
     icon: Receipt,
+    link: '/services',
   },
 ]
 
@@ -193,36 +192,27 @@ export const Hero = () => {
       {/* Floating Service Cards */}
       <div className='relative z-30 max-w-6xl mx-auto px-5 mt-10 sm:-mt-20 lg:-mt-16'>
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6'>
-          {services.map((service, index) => {
+{services.map((service, index) => {
             const Icon = service.icon
 
             return (
-               <div
-                 key={index}
-                 className={`rounded-md shadow-lg px-2 sm:px-3 py-4 sm:py-5 text-center transition-all duration-300 hover:-translate-y-2 cursor-pointer ${
-                   service.active
-                     ? 'bg-[#2436ff] text-white'
-                     : 'bg-white text-[#0e1630]'
-                 }`}
-               >
-                 <div className='flex justify-center mb-2 sm:mb-3'>
-                   <div
-                     className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center ${
-                       service.active
-                         ? 'bg-white/10 border border-white/20'
-                         : 'bg-[#f4f6ff]'
-                     }`}
-                   >
-                     <Icon size={16} />
-                   </div>
-                 </div>
+               <RouterLink
+                  key={index}
+                  to={service.link}
+                  className='group rounded-md shadow-lg px-2 sm:px-3 py-4 sm:py-5 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-[#2436ff] hover:text-white cursor-pointer bg-white text-[#0e1630]'
+                >
+                  <div className='flex justify-center mb-2 sm:mb-3'>
+                    <div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#f4f6ff] group-hover:bg-white/10 transition-colors duration-300'>
+                      <Icon size={16} />
+                    </div>
+                  </div>
 
-                 <h3 className='font-semibold text-xs sm:text-sm'>
-                   {service.title}
-                 </h3>
-              </div>
-            );
-          })}
+                  <h3 className='font-semibold text-xs sm:text-sm'>
+                    {service.title}
+                  </h3>
+               </RouterLink>
+             );
+           })}
         </div>
         
       </div>

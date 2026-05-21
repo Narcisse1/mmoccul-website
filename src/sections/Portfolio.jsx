@@ -13,33 +13,8 @@ export const Portfolio = () => {
   }, [])
 
   return (
-    <div className="w-full py-20 lg:py-28 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div 
-            data-aos="fade-up"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 shadow-sm"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Latest Updates</span>
-          </div>
-          <h1 
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="font-serif text-3xl lg:text-5xl font-bold text-slate-900 mt-6 leading-tight"
-          >
-            Stay Updated with <span className="bg-gradient-to-r from-cyan-500 to-sky-500 bg-clip-text text-transparent">MMOCCUL</span>
-          </h1>
-          <p 
-            data-aos="fade-up"
-            data-aos-delay="200"
-            className="mt-4 text-slate-600 max-w-2xl mx-auto leading-relaxed"
-          >
-            Discover the latest announcements, achievements, and updates from your trusted financial cooperative.
-          </p>
-        </div>
-
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* News Grid */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
           {news.map((item, index) => (
@@ -95,6 +70,6 @@ export const Portfolio = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -10,17 +10,7 @@ import branchImage3 from '../assets/assets2/1774855672617.jpg'
 import branchImage4 from '../assets/assets2/1774855672659.jpg'
 import branchImage5 from '../assets/assets2/1774855672707.jpg'
 
-export const BranchesPage = () => {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true })
-  }, [])
-
-  const [selectedRegion, setSelectedRegion] = useState('All')
-  const [searchTerm, setSearchTerm] = useState('')
-
-  const regions = ['All', 'Yaoundé', 'Douala', 'West Region', 'Southwest Region', 'Northwest Region', 'East Region']
-
-  const branches = [
+const branchList = [
     {
       id: 1, name: 'MMOCCUL Head Office - Damas Yaoundé',
       address: 'Rond Point Damas, Yaoundé, Cameroon',
@@ -143,7 +133,142 @@ export const BranchesPage = () => {
     }
   ]
 
-  const filteredBranches = branches.filter(b => {
+export const branches = branchList
+
+export const BranchesPage = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true })
+  }, [])
+
+  const [selectedRegion, setSelectedRegion] = useState('All')
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const regions = ['All', 'Yaoundé', 'Douala', 'West Region', 'Southwest Region', 'Northwest Region', 'East Region']
+
+  const branchList = [
+    {
+      id: 1, name: 'MMOCCUL Head Office - Damas Yaoundé',
+      address: 'Rond Point Damas, Yaoundé, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 6:00 PM, Sat: 8:00 AM - 2:00 PM',
+      region: 'Yaoundé', type: 'Head Office',
+      services: ['Personal Banking', 'Business Banking', 'Loans', 'Savings', 'International Transfers'],
+      image: branchImage1,
+      features: ['WiFi', 'Parking', 'Wheelchair Access', 'ATM', 'VIP Lounge'],
+      manager: 'Jean-Pierre Mbarga',
+      established: '2005'
+    },
+    {
+      id: 2, name: 'MMOCCUL Messassi Branch',
+      address: 'Dispensaire Messassi, Yaoundé, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'Yaoundé', type: 'Branch',
+      services: ['Personal Banking', 'Savings', 'Mobile Banking', 'Microfinance'],
+      image: branchImage2,
+      features: ['WiFi', 'ATM', 'Parking'],
+      manager: 'Marie-Claire Oyono',
+      established: '2012'
+    },
+    {
+      id: 3, name: 'MMOCCUL Etoug-Ebe Branch',
+      address: 'Centre Handicapes, Etoug-Ebe, Yaoundé, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'Yaoundé', type: 'Branch',
+      services: ['Personal Banking', 'Business Banking', 'Loans', 'Insurance'],
+      image: branchImage3,
+      features: ['WiFi', 'Parking', 'Wheelchair Access'],
+      manager: 'Paul Essomba',
+      established: '2015'
+    },
+    {
+      id: 4, name: 'MMOCCUL Douala Village Branch',
+      address: 'Opposite Tradex Bonne Dix, Douala Village, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 6:00 PM, Sat: 8:00 AM - 2:00 PM',
+      region: 'Douala', type: 'Branch',
+      services: ['Business Banking', 'Corporate Services', 'Trade Finance', 'Foreign Exchange'],
+      image: branchImage4,
+      features: ['WiFi', 'Parking', 'ATM', 'VIP Lounge'],
+      manager: 'François Mbappe',
+      established: '2010'
+    },
+    {
+      id: 5, name: 'MMOCCUL Bonaberi Village Branch',
+      address: 'General Express New Building, Bonaberi, Douala, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'Douala', type: 'Branch',
+      services: ['Personal Banking', 'SME Banking', 'Mobile Banking'],
+      image: branchImage1,
+      features: ['WiFi', 'ATM', 'Parking'],
+      manager: 'Sylvie Kamdem',
+      established: '2018'
+    },
+    {
+      id: 6, name: 'MMOCCUL Dschang Branch',
+      address: 'Beside Alimentation Forbin, Marché A, Dschang, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'West Region', type: 'Branch',
+      services: ['Personal Banking', 'Agricultural Loans', 'SME Banking', 'Student Accounts'],
+      image: branchImage5,
+      features: ['WiFi', 'Parking', 'Student Lounge'],
+      manager: 'Dr. Emmanuel Fokou',
+      established: '2014'
+    },
+    {
+      id: 7, name: 'MMOCCUL Bafoussam Branch',
+      address: 'Ancien Cinema 4 Etages, Entree Marché B, Bafoussam, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'West Region', type: 'Branch',
+      services: ['Personal Banking', 'Business Banking', 'Microfinance', 'Insurance'],
+      image: branchImage1,
+      features: ['WiFi', 'Parking', 'ATM'],
+      manager: 'Henriette Djoumessi',
+      established: '2016'
+    },
+    {
+      id: 8, name: 'MMOCCUL Buea Branch',
+      address: 'UB Junction, Opposite TFC Restaurant, Buea, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'Southwest Region', type: 'Branch',
+      services: ['Personal Banking', 'Educational Loans', 'Student Accounts', 'Mobile Banking'],
+      image: branchImage2,
+      features: ['WiFi', 'Parking', 'Student Lounge'],
+      manager: 'Dr. Peter Tambi',
+      established: '2013'
+    },
+    {
+      id: 9, name: 'MMOCCUL Bamenda Branch',
+      address: 'Food Market – E Square, Bamenda, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'Northwest Region', type: 'Branch',
+      services: ['Personal Banking', 'Business Banking', 'Agricultural Loans', 'Microfinance'],
+      image: branchImage3,
+      features: ['WiFi', 'Parking', 'ATM'],
+      manager: 'Grace Ngum',
+      established: '2011'
+    },
+    {
+      id: 10, name: 'MMOCCUL Bertoua Branch',
+      address: 'Rue Grand Total Ndouan, Bertoua, Cameroon',
+      phone: '+237 670 020 630',
+      hours: 'Mon-Fri: 8:00 AM - 5:00 PM, Sat: 8:00 AM - 12:00 PM',
+      region: 'East Region', type: 'Branch',
+      services: ['Personal Banking', 'Agricultural Finance', 'Rural Banking', 'Microfinance'],
+      image: branchImage4,
+      features: ['WiFi', 'Parking', 'ATM'],
+      manager: 'Michel Ngounou',
+      established: '2017'
+    }
+   ]
+
+  const filteredBranches = branchList.filter(b => {
     const matchRegion = selectedRegion === 'All' || b.region === selectedRegion
     const matchSearch = b.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                        b.address.toLowerCase().includes(searchTerm.toLowerCase())

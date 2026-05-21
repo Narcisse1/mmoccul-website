@@ -47,7 +47,7 @@ export const services = [
           'No hidden fees',
           'Personalized loan amounts'
         ],
-        description: 'Achieve your personal goals with our flexible personal loan solutions. Whether you\'re planning a home renovation, funding your education, covering medical expenses, or consolidating debt, our personal loans offer competitive interest rates and flexible repayment terms tailored to your financial situation.',
+        description: 'Achieve your personal goals with flexible personal loans. Whether planning home renovations, education funding, medical expenses, or debt consolidation, we offer competitive rates and tailored repayment terms.',
         benefits: [
           'Fast approval within 48 hours',
           'Loan amounts from 50,000 to 10,000,000 FCFA',
@@ -77,7 +77,7 @@ export const services = [
           'No minimum balance',
           'Free withdrawals'
         ],
-        description: 'Build a secure financial future with our comprehensive savings solutions. Our savings accounts are designed to help you achieve your financial goals, whether you\'re saving for a vacation, education, or building an emergency fund. We offer competitive interest rates that help your money grow while maintaining easy access to your funds when you need them.',
+        description: 'Build a secure financial future with competitive interest rates and easy access to your funds for vacations, education, or emergency savings.',
         benefits: [
           'Competitive interest rates on balances',
           'No minimum balance requirements',
@@ -107,7 +107,7 @@ export const services = [
           'Parental supervision',
           'Growth tracking'
         ],
-        description: 'Give your child the gift of financial literacy with our Minor Savings Account. This account is specifically designed to help children and teenagers learn about money management while building savings habits that will last a lifetime. Parents or legal guardians maintain oversight while children learn valuable financial skills through hands-on experience.',
+        description: 'Help your child learn money management with our Minor Savings Account featuring parental oversight and growth tracking.',
         benefits: [
           'No minimum deposit required',
           'Special interest rates for young savers',
@@ -148,7 +148,7 @@ export const services = [
           'Quick processing',
           'Expert business advice'
         ],
-        description: 'Power your business growth with our comprehensive business financing solutions. Whether you\'re a startup looking for initial capital, an established business seeking expansion funds, or need working capital for daily operations, our business loans are designed to support your entrepreneurial journey. Our team of business finance experts works closely with you to understand your unique needs and provide tailored solutions.',
+        description: 'Power your business growth with tailored financing solutions for startups, expansion, or working capital needs.',
         benefits: [
           'Loan amounts from 1,000,000 to 100,000,000 FCFA',
           'Flexible repayment terms (12-84 months)',
@@ -180,7 +180,7 @@ export const services = [
           'Detailed payroll reports',
           'Employee self-service portal'
         ],
-        description: 'Streamline your payroll operations with our comprehensive salary processing services. We handle the complexities of payroll management so you can focus on growing your business. Our system ensures that your employees receive their salaries on time, every time, with complete accuracy and security. From small businesses to large corporations, our scalable solution adapts to your needs.',
+        description: 'Streamline payroll operations with timely, secure salary disbursement and comprehensive reporting.',
         benefits: [
           'On-time salary disbursement guaranteed',
           'Secure direct deposit to employee accounts',
@@ -257,7 +257,7 @@ export const services = [
           'Instant transfers',
           'Bill payments'
         ],
-        description: 'Experience the future of banking with our comprehensive mobile money services. Through partnerships with Orange Money and MTN Mobile Money, we bring banking services directly to your mobile phone. Send money, pay bills, check balances, and manage your finances anytime, anywhere. Our mobile money services are designed for convenience, security, and speed, making banking accessible to everyone.',
+        description: 'Bank on the go with mobile money services through Orange Money and MTN Mobile Money partnerships. Send money, pay bills, and manage finances instantly from your phone.',
         benefits: [
           'Instant money transfers nationwide',
           'Bill payment for utilities and services',
