@@ -10,8 +10,10 @@ import logo7 from '../assets/Slide7.png'
 import logo8 from '../assets/slide10.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Clients = () => {
+  const { t } = useLanguage();
 
   useEffect(() => {
     AOS.init({
@@ -40,7 +42,7 @@ export const Clients = () => {
               <span 
                 className='text-white text-[11px] sm:text-xs font-semibold tracking-[0.4em] uppercase'
               >
-                Trusted Partners
+                {t('trustedPartners')}
               </span>
             </div>
             <h2 
@@ -48,15 +50,14 @@ export const Clients = () => {
               data-aos-delay="100"
               className='text-white text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins mb-5 leading-tight tracking-tight'
             >
-              Strategic Alliances with <br className='hidden lg:block' />
-              <span className='bg-gradient-to-r from-themegreen to-emerald-400 bg-clip-text text-transparent'>Global Industry Leaders</span>
+              {t('strategicAlliances')}
             </h2>
             <p 
               data-aos="fade-up" 
               data-aos-delay="200"
               className='text-gray-400 text-base max-w-3xl mx-auto font-poppins leading-relaxed tracking-wide'
             >
-              We proudly partner with renowned organizations worldwide to deliver exceptional financial services with excellence, integrity, and unwavering commitment to our members.
+              {t('clientsDesc')}
             </p>
           </div>
         </div>
@@ -94,7 +95,7 @@ export const Clients = () => {
               <div className='absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-themegreen to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full'></div>
             </div>
             <p className='text-gray-500 text-sm font-medium tracking-[0.15em] uppercase'>
-              Partner Organizations
+              {t('partnerOrganizations')}
             </p>
           </div>
           <div data-aos="fade-up" data-aos-delay="350" className='text-center group relative'>
@@ -105,7 +106,7 @@ export const Clients = () => {
               <div className='absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-themegreen to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full'></div>
             </div>
             <p className='text-gray-500 text-sm font-medium tracking-[0.15em] uppercase'>
-              Satisfied Members
+              {t('satisfiedMembers')}
             </p>
           </div>
           <div data-aos="fade-up" data-aos-delay="400" className='text-center group relative'>
@@ -116,7 +117,7 @@ export const Clients = () => {
               <div className='absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-themegreen to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full'></div>
             </div>
             <p className='text-gray-500 text-sm font-medium tracking-[0.15em] uppercase'>
-              Client Satisfaction
+              {t('clientSatisfaction')}
             </p>
           </div>
           <div data-aos="fade-up" data-aos-delay="450" className='text-center group relative'>
@@ -127,7 +128,7 @@ export const Clients = () => {
               <div className='absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-themegreen to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full'></div>
             </div>
             <p className='text-gray-500 text-sm font-medium tracking-[0.15em] uppercase'>
-              Years of Excellence
+              {t('yearsOfExcellence')}
             </p>
           </div>
         </div>

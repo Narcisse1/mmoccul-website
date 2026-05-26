@@ -5,11 +5,14 @@ import {
   FaEnvelope,
   FaArrowRight,
 } from 'react-icons/fa'
+import { useLanguage } from '../context/LanguageContext'
 
 // Import your image
 import contactImg from '../assets/assets3/contact.png'
 
 export const ContactSection = () => {
+  const { t } = useLanguage()
+
   return (
     <section className='w-full bg-[#f5f7fb] px-4 sm:px-6 lg:px-8 overflow-hidden'>
       <div className='max-w-7xl mx-auto'>
@@ -28,23 +31,20 @@ export const ContactSection = () => {
               <div className='inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-3 py-1.5 mb-2.5 sm:mb-3'>
                 <span className='w-2 h-2 bg-[#2436ff] rounded-full flex-shrink-0' />
                 <span className='text-[#2436ff] text-xs uppercase tracking-[0.25em] font-semibold'>
-                  Contact MMOCCUL
+                  {t('contactMmoccul')}
                 </span>
               </div>
 
               {/* Heading — clamp gives fluid sizing from 375 px up to 1440 px / XL screens */}
               <h2 className='text-white font-bold leading-[1.15] mb-3 sm:mb-4 drop-shadow-md
                              text-[clamp(1.35rem,4.2vw,2.5rem)]'>
-                We&apos;re Always<br />
-                Here To Help
+                {t('alwaysHelp')}
               </h2>
 
               {/* Text */}
               <p className='text-white font-medium leading-relaxed mb-4 sm:mb-6 drop-shadow-sm
                             text-[clamp(0.9rem,2.4vw,1.125rem)]'>
-                Get instant assistance for all your banking needs. Our dedicated support team is
-                ready to help you with account inquiries, transactions, and personalized financial
-                guidance.
+                {t('contactText')}
               </p>
 
               {/* Contact Buttons */}
@@ -64,7 +64,7 @@ export const ContactSection = () => {
                       <FaPhoneAlt className='text-white text-sm sm:text-base' />
                     </div>
                     <p className='text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] text-blue-100 mb-0 whitespace-nowrap'>
-                      Call Us
+                      {t('callUs')}
                     </p>
                   </div>
                   <FaArrowRight className='group-hover:translate-x-0.5 transition-transform duration-300
@@ -88,7 +88,7 @@ export const ContactSection = () => {
                       <FaWhatsapp className='text-white text-sm sm:text-base' />
                     </div>
                     <p className='text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] text-gray-400 mb-0 whitespace-nowrap'>
-                      WhatsApp
+                      {t('whatsApp')}
                     </p>
                   </div>
                   <FaArrowRight className='group-hover:translate-x-0.5 transition-transform duration-300
@@ -109,7 +109,7 @@ export const ContactSection = () => {
                       <FaEnvelope className='text-[#2436ff] text-sm sm:text-base' />
                     </div>
                     <p className='text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] text-slate-500 mb-0 whitespace-nowrap'>
-                      Email Address
+                      {t('emailAddress')}
                     </p>
                   </div>
                   <FaArrowRight className='group-hover:translate-x-0.5 transition-transform duration-300

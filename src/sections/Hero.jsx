@@ -9,84 +9,85 @@ import {
   Users,
   Receipt,
 } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 // Background images
 import heroBg1 from '../assets/assets3/savings.png'
 import heroBg2 from '../assets/assets3/customer_service.png'
 import heroBg3 from '../assets/assets3/mobile_banking.png'
 import heroBg4 from '../assets/assets3/community.png'
-const slidesData = [
+
+const getSlidesData = (t) => [
   {
     id: 1,
-    tag: 'WELCOME TO MMOCCUL',
-    title: 'Save Today,',
-    highlight: 'Secure Tomorrow',
-    description:
-      'Build a stronger future with flexible savings plans, trusted financial guidance, and secure banking solutions tailored for your goals.',
-    buttonText: 'Learn More',
+    tag: t('welcomeTag'),
+    title: t('heroSlide1Title'),
+    highlight: t('heroSlide1Highlight'),
+    description: t('heroSlide1Desc'),
+    buttonText: t('heroSlide1Btn'),
     bgImage: heroBg1,
     icon: Wallet,
   },
   {
     id: 2,
-    tag: 'WELCOME TO MMOCCUL',
-    title: 'Real People,',
-    highlight: 'Real Support',
-    description:
-      'Our dedicated customer care team is always ready to help you with fast, friendly, and professional banking assistance.',
-    buttonText: 'Learn More',
+    tag: t('welcomeTag'),
+    title: t('heroSlide2Title'),
+    highlight: t('heroSlide2Highlight'),
+    description: t('heroSlide2Desc'),
+    buttonText: t('heroSlide2Btn'),
     bgImage: heroBg2,
     icon: Headphones,
   },
   {
     id: 3,
-    tag: 'WELCOME TO MMOCCUL',
-    title: 'Bank on the Go,',
-    highlight: 'Anytime, Anywhere',
-    description:
-      'Enjoy secure mobile banking with instant transfers, account access, bill payments, and financial control right from your phone.',
-    buttonText: 'Learn More',
+    tag: t('welcomeTag'),
+    title: t('heroSlide3Title'),
+    highlight: t('heroSlide3Highlight'),
+    description: t('heroSlide3Desc'),
+    buttonText: t('heroSlide3Btn'),
     bgImage: heroBg3,
     icon: Smartphone,
   },
   {
     id: 4,
-    tag: 'WELCOME TO MMOCCUL',
-    title: 'Stronger Together,',
-    highlight: 'Better Community',
-    description:
-      'We believe in empowering communities through financial inclusion, shared growth, and opportunities that improve lives.',
-    buttonText: 'Learn More',
+    tag: t('welcomeTag'),
+    title: t('heroSlide4Title'),
+    highlight: t('heroSlide4Highlight'),
+    description: t('heroSlide4Desc'),
+    buttonText: t('heroSlide4Btn'),
     bgImage: heroBg4,
     icon: Users,
   },
 ]
 
-const services = [
+const getServices = (t) => [
   {
-    title: 'Create Account',
+    title: t('createAccountHero'),
     icon: Users,
     link: '/create-account',
   },
   {
-    title: 'Customer Service',
+    title: t('customerService'),
     icon: Headphones,
     link: '/contact',
   },
   {
-    title: 'Savings Account',
+    title: t('savingsAccount'),
     icon: Wallet,
     link: '/services',
   },
   {
-    title: 'Online Payment',
+    title: t('onlinePayment'),
     icon: Receipt,
     link: '/services',
   },
 ]
 
 export const Hero = () => {
+  const { t } = useLanguage()
   const [currentSlide, setCurrentSlide] = useState(0)
+  const slidesData = getSlidesData(t)
+  const services = getServices(t)
 
   useEffect(() => {
     AOS.init({
@@ -98,7 +99,7 @@ export const Hero = () => {
   // Auto Slide
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slidesData.length)
+      setCurrentSlide((prev) => (prev + 1) % 4)
     }, 6000)
 
     return () => clearInterval(interval)

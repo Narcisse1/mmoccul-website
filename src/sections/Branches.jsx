@@ -11,6 +11,9 @@ import {
   FaDirections,
 } from 'react-icons/fa';
 
+// ─── Language Context ─────────────────────────────────────────────────────────
+import { useLanguage } from '../context/LanguageContext';
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 const BRANCHES = [
   {
@@ -123,32 +126,30 @@ const AOS_CONFIG = {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-const SectionHeader = ({ totalBranches }) => (
+const SectionHeader = ({ totalBranches, t }) => (
   <div className='text-center max-w-4xl mx-auto mb-16' data-aos='fade-up'>
     <div className='inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-slate-900 to-slate-700 text-white rounded-full mb-8 shadow-lg'>
       <div className='w-3 h-3 bg-themegreen rounded-full animate-pulse' />
       <span className='text-sm font-semibold tracking-wider uppercase'>
-        Nationwide Presence
+        {t('nationwidePresence')}
       </span>
       <div className='w-3 h-3 bg-themegreen rounded-full animate-pulse' />
     </div>
 
     <h2 className='text-slate-900 lg:text-6xl text-4xl font-bold font-poppins mb-6 leading-tight'>
-      Our{' '}
+      {t('ourServices')}{' '}
       <span className='text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-themegreen to-slate-900 font-extrabold'>
-        Professional Network
+        {t('professionalNetwork')}
       </span>
     </h2>
 
     <p className='text-slate-600 text-lg font-poppins leading-relaxed max-w-2xl mx-auto'>
-      Strategically positioned across Cameroon's major cities, our branches
-      deliver premium financial services with the highest standards of
-      professionalism and customer care.
+      {t('branchesDesc')}
     </p>
   </div>
 );
 
-const MapSection = ({ totalBranches }) => (
+const MapSection = ({ totalBranches, t }) => (
   <div
     data-aos='fade-right'
     className='relative h-[650px] rounded-2xl overflow-hidden shadow-2xl border border-slate-200'
@@ -173,10 +174,10 @@ const MapSection = ({ totalBranches }) => (
         </div>
         <div>
           <p className='text-2xl font-bold font-poppins'>
-            {totalBranches} Strategic Locations
+            {totalBranches} {t('strategicLocations')}
           </p>
           <p className='text-slate-200 text-sm mt-1'>
-            Premium service across Cameroon
+            {t('premiumService')}
           </p>
         </div>
       </div>
@@ -186,10 +187,10 @@ const MapSection = ({ totalBranches }) => (
     <div className='absolute bottom-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-lg border border-slate-200'>
       <div className='flex items-center gap-3'>
         <div className='w-4 h-4 bg-gradient-to-r from-themegreen to-green-600 rounded-full' />
-        <span className='text-slate-700 text-sm font-medium'>Head Office</span>
+        <span className='text-slate-700 text-sm font-medium'>{t('headOffice')}</span>
         <div className='w-4 h-4 bg-slate-400 rounded-full ml-4' />
         <span className='text-slate-700 text-sm font-medium'>
-          Branch Locations
+          {t('branchLocations')}
         </span>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 export const EasyProcess = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleOpenAccount = () => {
     navigate('/create-account');
@@ -10,7 +12,7 @@ export const EasyProcess = () => {
 
   const steps = [
     {
-      label: 'Present your documents',
+      label: t('presentDocuments'),
       icon: (
         <svg className='w-[36px] h-[36px]' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth={1.5} strokeLinecap='round' strokeLinejoin='round'>
           <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/>
@@ -19,7 +21,7 @@ export const EasyProcess = () => {
       ),
     },
     {
-      label: 'Fill the opening form',
+      label: t('fillOpeningForm'),
       icon: (
         <svg className='w-[36px] h-[36px]' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth={1.5} strokeLinecap='round' strokeLinejoin='round'>
           <path d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/>
@@ -28,7 +30,7 @@ export const EasyProcess = () => {
       ),
     },
     {
-      label: 'Verification of your documents',
+      label: t('verificationDocuments'),
       icon: (
         <svg className='w-[36px] h-[36px]' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth={1.5} strokeLinecap='round' strokeLinejoin='round'>
           <path d='M9 11l3 3L22 4'/>
@@ -37,7 +39,7 @@ export const EasyProcess = () => {
       ),
     },
     {
-      label: 'Creation of your bank account',
+      label: t('creationBankAccount'),
       icon: (
         <svg className='w-[36px] h-[36px]' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth={1.5} strokeLinecap='round' strokeLinejoin='round'>
           <rect x='3' y='3' width='18' height='18' rx='2' ry='2'/>
@@ -54,14 +56,14 @@ export const EasyProcess = () => {
           className="font-['Playfair_Display'] text-[clamp(2rem,5vw,3.2rem)] font-semibold text-[#1A3A6B] tracking-[-0.5px] mb-[14px] opacity-0 animate-fade-up"
           style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
         >
-          We make life easy
+          {t('weMakeLifeEasy')}
         </h2>
 
         <p 
           className="text-[clamp(1rem,2.5vw,1.35rem)] font-normal text-[#1A3A6B] mb-[36px] opacity-0 animate-fade-up"
           style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
         >
-          Open your account now
+          {t('openAccountNow')}
         </p>
 
         <div 
@@ -102,7 +104,7 @@ export const EasyProcess = () => {
           className="inline-block bg-[#1A3A6B] text-white font-['DM_Sans'] text-[0.95rem] font-medium tracking-[0.03em] py-4 px-11 border-none rounded-[3px] cursor-pointer transition-all duration-250 hover:bg-[#0f2548] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(26,58,107,0.25)] opacity-0 animate-fade-up"
           style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}
         >
-          Open an account
+          {t('openAnAccount')}
         </button>
       </div>
     </section>

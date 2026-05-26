@@ -3,6 +3,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import aboutimg from '../assets/about.jpg'
 import { Link as RouterLink } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 // Feature images from assets2
 import loansImg from '../assets/assets2/1774855672791.jpg'
@@ -10,9 +11,10 @@ import secureImg from '../assets/assets2/1774855672572.jpg'
 import communityImg from '../assets/assets2/1774855672707.jpg'
 
 export const About = () => {
+  const { t } = useLanguage();
 
   const [typedText, setTypedText] = useState('');
-  const fullText = "Banking Built on Trust, Driven by Community";
+  const fullText = t('bankingBuiltOnTrust');
 
   useEffect(() => {
     AOS.init({
@@ -36,22 +38,22 @@ export const About = () => {
       }
     }, 80);
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText]);
 
   const features = [
     {
-      title: "Low-Interest Loans",
-      description: "Access affordable financing options designed to help your business grow and thrive.",
+      title: t('lowInterestLoans'),
+      description: t('lowInterestLoansDesc'),
       image: loansImg,
     },
     {
-      title: "Secure Banking",
-      description: "Your money is protected with state-of-the-art security measures.",
+      title: t('secureBanking'),
+      description: t('secureBankingDesc'),
       image: secureImg,
     },
     {
-      title: "Community First",
-      description: "Join thousands of members who trust us with their financial goals.",
+      title: t('communityFirst'),
+      description: t('communityFirstDesc'),
       image: communityImg,
     },
   ]
@@ -67,7 +69,7 @@ export const About = () => {
             className='inline-block px-5 py-2.5 bg-[#2436ff] rounded-full mb-6 transition-all duration-300 hover:bg-[#1b2be0]'
           >
             <span className='text-white text-[10px] sm:text-xs font-semibold tracking-[0.35em] uppercase'>
-              Our Identity
+              {t('ourIdentity')}
             </span>
           </div>
 
@@ -107,21 +109,21 @@ export const About = () => {
                     <div className='text-center'>
                       <h3 className='text-[#2436ff] text-2xl font-bold'>14K+</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
-                        Members
+                        {t('members')}
                       </p>
                     </div>
 
                     <div className='text-center border-x border-slate-200'>
                       <h3 className='text-[#2436ff] text-2xl font-bold'>50+</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
-                        Partners
+                        {t('partners')}
                       </p>
                     </div>
 
                     <div className='text-center'>
                       <h3 className='text-[#2436ff] text-2xl font-bold'>99%</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
-                        Satisfaction
+                        {t('satisfaction')}
                       </p>
                     </div>
 
@@ -139,14 +141,11 @@ export const About = () => {
           <div data-aos="fade-left" className='space-y-5'>
             
             <h2 className='text-[#0e1630] text-4xl font-bold font-poppins leading-tight'>
-              Why Choose MMOCCUL?
+              {t('whyChooseMmoccul')}
             </h2>
 
             <p className='text-slate-600 text-lg leading-relaxed font-poppins'>
-              We are more than just a financial institution — we are a community 
-              dedicated to helping our members achieve financial independence. 
-              With transparent processes, competitive rates, and personalized service, 
-              we make banking simple and accessible for everyone.
+              {t('aboutWhyText')}
             </p>
 
             <RouterLink 
@@ -154,7 +153,7 @@ export const About = () => {
               data-aos="fade-up" 
               className='inline-block bg-[#2436ff] hover:bg-[#1b2be0] py-4 px-8 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105'
             >
-              Learn More
+              {t('learnMore')}
             </RouterLink>
           </div>
         </div>
@@ -203,7 +202,7 @@ export const About = () => {
                 </h3>
 
                 <p className='text-slate-600 uppercase tracking-[0.2em] text-xs font-semibold'>
-                  Active Members
+                  {t('activeMembers')}
                 </p>
               </div>
 
@@ -213,7 +212,7 @@ export const About = () => {
                 </h3>
 
                 <p className='text-slate-600 uppercase tracking-[0.2em] text-xs font-semibold'>
-                  Customer Satisfaction
+                  {t('customerSatisfaction')}
                 </p>
               </div>
 
@@ -223,7 +222,7 @@ export const About = () => {
                 </h3>
 
                 <p className='text-slate-600 uppercase tracking-[0.2em] text-xs font-semibold'>
-                  Trusted Partners
+                  {t('trustedPartners')}
                 </p>
               </div>
 
@@ -233,7 +232,7 @@ export const About = () => {
                 </h3>
 
                 <p className='text-slate-600 uppercase tracking-[0.2em] text-xs font-semibold'>
-                  Member Support
+                  {t('memberSupport')}
                 </p>
               </div>
 

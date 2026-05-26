@@ -3,8 +3,10 @@ import backgroundImage from '../assets/hero_bg.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaPhoneAlt, FaWhatsapp, FaArrowRight, FaHeadset, FaComments } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 export const CTA = () => {
+  const { t } = useLanguage();
 
   useEffect(() => {
     AOS.init({
@@ -34,7 +36,7 @@ export const CTA = () => {
         >
           <span className='w-2 h-2 bg-themegreen rounded-full animate-pulse'></span>
           <span className='text-themegreen text-sm font-semibold tracking-[0.25em] uppercase'>
-            Get In Touch
+            {t('getInTouchCTA')}
           </span>
         </div>
 
@@ -44,8 +46,7 @@ export const CTA = () => {
           data-aos-delay="100"
           className='text-white lg:text-6xl text-3xl font-bold font-poppins mb-6 leading-tight'
         >
-          Ready to <span className='text-transparent bg-clip-text bg-gradient-to-r from-themegreen via-green-400 to-emerald-400'>Transform</span> Your <br/>
-          Financial Future?
+          {t('transformFuture')}
         </h1>
         
         {/* Description */}
@@ -54,8 +55,7 @@ export const CTA = () => {
           data-aos-delay="200"
           className='text-gray-300 text-xl font-poppins max-w-2xl mx-auto leading-relaxed mb-10'
         >
-          Join thousands of satisfied members who have taken control of their finances with MMOCCUL. 
-          Whether you need a loan, want to save, or have questions — we're here to help!
+          {t('ctaText')}
         </p>
 
         {/* CTA Buttons - Phone, WhatsApp, and Create Account */}
@@ -70,7 +70,7 @@ export const CTA = () => {
             className='flex items-center gap-3 bg-themegreen hover:bg-green-600 text-white text-base font-semibold py-3.5 px-7 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg'
           >
             <FaArrowRight className='text-lg' />
-            <span>Create Account</span>
+            <span>{t('createAccountCTA')}</span>
           </a>
           
           {/* Contact Us - Phone Call */}
@@ -79,7 +79,7 @@ export const CTA = () => {
             className='flex items-center gap-3 bg-white text-gray-900 hover:bg-gray-100 text-base font-semibold py-3.5 px-7 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg'
           >
             <FaPhoneAlt className='text-lg' />
-            <span>Contact Us</span>
+            <span>{t('contactUsCTA')}</span>
             <FaArrowRight className='text-sm' />
           </a>
           
@@ -91,7 +91,7 @@ export const CTA = () => {
             className='flex items-center gap-3 bg-white text-gray-900 hover:bg-gray-100 text-base font-semibold py-3.5 px-7 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg'
           >
             <FaWhatsapp className='text-lg text-green-600' />
-            <span>Reach Us on WhatsApp</span>
+            <span>{t('reachUsWhatsApp')}</span>
             <FaArrowRight className='text-sm' />
           </a>
         </div>
@@ -107,8 +107,8 @@ export const CTA = () => {
               <FaHeadset className='text-themegreen' />
             </div>
             <div className='text-left'>
-              <p className='text-white font-bold'>24/7 Support</p>
-              <p className='text-sm'>Always here to help</p>
+              <p className='text-white font-bold'>{t('support247')}</p>
+              <p className='text-sm'>{t('support247Desc')}</p>
             </div>
           </div>
           <div className='flex items-center gap-3 text-gray-400'>
@@ -116,8 +116,8 @@ export const CTA = () => {
               <FaComments className='text-themegreen' />
             </div>
             <div className='text-left'>
-              <p className='text-white font-bold'>Quick Response</p>
-              <p className='text-sm'>We reply fast</p>
+              <p className='text-white font-bold'>{t('quickResponse')}</p>
+              <p className='text-sm'>{t('quickResponseDesc')}</p>
             </div>
           </div>
         </div>

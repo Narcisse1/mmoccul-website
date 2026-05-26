@@ -78,16 +78,16 @@ export const Header = () => {
           {/* Actions */}
           <div className="flex items-center gap-4">
 
-            {/* Search */}
-            <div className="relative">
-              <RouterLink 
-                to="/search" 
-                className="flex items-center justify-center w-48 rounded-full border border-gray-300 px-4 py-2 text-[14px] focus:outline-none focus:border-blue-900"
-              >
-                <IoSearch className="text-gray-500" />
-                <span className="ml-2 text-[13px]">Search</span>
-              </RouterLink>
-            </div>
+{/* Search */}
+             <div className="relative">
+               <RouterLink 
+                 to="/search" 
+                 className="flex items-center justify-center w-48 rounded-full border border-gray-300 px-4 py-2 text-[14px] focus:outline-none focus:border-blue-900"
+               >
+                 <IoSearch className="text-gray-500" />
+                 <span className="ml-2 text-[13px]">{t('search')}</span>
+               </RouterLink>
+             </div>
 
             {/* Mobile Banking */}
             <a 
@@ -102,21 +102,21 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Right */}
-        <div className="flex items-center gap-3 lg:hidden">
-          <div className="relative">
-            <RouterLink 
-              to="/search" 
-              className="flex items-center justify-center"
-            >
-              <IoSearch className="text-xl text-blue-900" />
-              <span className="ml-1 text-[10px]">Search</span>
-            </RouterLink>
-          </div>
-          <button onClick={() => setMenuOpen(true)} className="text-2xl text-blue-900">
-            <IoMenu />
-          </button>
-        </div>
+{/* Mobile Right */}
+         <div className="flex items-center gap-3 lg:hidden">
+           <div className="relative">
+             <RouterLink 
+               to="/search" 
+               className="flex items-center justify-center"
+             >
+               <IoSearch className="text-xl text-blue-900" />
+               <span className="ml-1 text-[10px]">{t('search')}</span>
+             </RouterLink>
+           </div>
+           <button onClick={() => setMenuOpen(true)} className="text-2xl text-blue-900">
+             <IoMenu />
+           </button>
+         </div>
       </div>
 
       {/* 🔹 BLUE NAV BAR */}
@@ -143,12 +143,12 @@ export const Header = () => {
         menuOpen ? 'translate-x-0' : 'translate-x-full'
       } transition-transform duration-300`}>
 
-        <div className="flex justify-between items-center p-5 border-b">
-          <span className="font-medium text-blue-900">Menu</span>
-          <button onClick={() => setMenuOpen(false)}>
-            <IoCloseSharp className="text-2xl text-blue-900" />
-          </button>
-        </div>
+<div className="flex justify-between items-center p-5 border-b">
+           <span className="font-medium text-blue-900">{t('menu')}</span>
+           <button onClick={() => setMenuOpen(false)}>
+             <IoCloseSharp className="text-2xl text-blue-900" />
+           </button>
+         </div>
 
         <div className="p-5 space-y-5">
           {menuLinks.map((link) => (
@@ -177,18 +177,22 @@ export const Header = () => {
           </RouterLink>
         </div>
 
-        <div className="absolute bottom-0 w-full p-5 border-t space-y-4">
+        <div className="absolute bottom-0 w-full p-5 border-t space-y-4 bg-white">
 
+          {/* Mobile Banking Button - Better arranged */}
           <a 
             href="https://mmocculonline.com/" 
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full border border-blue-900 text-blue-900 py-2 rounded-full block"
+            className="w-full bg-blue-900 text-white text-center py-3 px-4 rounded-full block text-sm font-semibold hover:bg-blue-800 transition shadow-lg flex items-center justify-center gap-2"
           >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
             {t('mobileBanking')}
           </a>
 
-          <div className="text-sm text-gray-500 flex justify-between">
+          <div className="text-sm text-gray-500 flex justify-center items-center gap-3 pt-2">
             <span 
               className={`text-blue-900 font-medium mr-2 cursor-pointer ${language === 'en' ? 'font-bold' : ''}`}
               onClick={() => handleLanguageChange('en')}

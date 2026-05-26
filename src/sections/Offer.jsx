@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { services } from '../export';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Offer = () => {
+  const { t } = useLanguage();
 
   useEffect(() => {
     AOS.init({
@@ -22,7 +24,7 @@ export const Offer = () => {
           className='inline-block px-8 py-3 bg-gradient-to-r from-blue-100 to-blue-200 border border-blue-300 rounded-full mb-8 shadow-lg'
         >
           <span className='text-blue-800 text-lg font-semibold tracking-[0.3em] uppercase'>
-            Our Services
+            {t('ourServices')}
           </span>
         </div>
         <h1 
@@ -30,16 +32,14 @@ export const Offer = () => {
           data-aos-delay="100"
           className='text-gray-900 lg:text-6xl text-4xl font-bold font-poppins mb-6 leading-tight'
         >
-          Comprehensive <span className='text-blue-800'>Financial Solutions</span> for Your Success
+          {t('comprehensiveFinancial')}
         </h1>
         <p 
           data-aos="fade-up" 
           data-aos-delay="200"
           className='text-gray-600 text-lg font-poppins max-w-3xl mx-auto leading-relaxed tracking-wide'
         >
-          From personal loans to business financing, mobile banking to secure savings accounts — 
-          we provide sophisticated financial solutions designed to help our members achieve their goals. 
-          Experience the difference of professional cooperative banking that prioritizes your financial well-being.
+          {t('offerDesc')}
         </p>
       </div>
 
@@ -70,7 +70,7 @@ export const Offer = () => {
             <button className='text-blue-800 hover:text-gray-900 text-sm font-medium 
             uppercase mt-2 flex items-center gap-3 group-hover:gap-4 transition-all duration-300'>
               <span className='w-6 h-0.5 bg-blue-800 group-hover:bg-gray-900 transition-colors'></span>
-              Learn More 
+              {t('learnMore')}
               <span className='group-hover:translate-x-1 transition-transform duration-300'>→</span>
             </button>
           </div>
@@ -87,7 +87,7 @@ export const Offer = () => {
         text-white py-4 px-12 font-semibold rounded-full transition-all duration-300 
         hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-105 hover:text-blue-600 
         border-2 border-blue-600/30 hover:border-transparent inline-block'>
-          Explore Our Services
+          {t('exploreOurServices')}
         </a>
       </div>
     </div>

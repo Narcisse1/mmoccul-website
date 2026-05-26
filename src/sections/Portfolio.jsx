@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { news } from '../export'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { useLanguage } from '../context/LanguageContext'
 
 export const Portfolio = () => {
+  const { t } = useLanguage();
 
   useEffect(() => {
     AOS.init({
@@ -60,7 +62,7 @@ export const Portfolio = () => {
                 
                 {/* Read More */}
                 <button className="text-cyan-600 hover:text-cyan-700 text-sm font-semibold flex items-center gap-1 transition-colors">
-                  Read more
+                  {t('readMore')}
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
