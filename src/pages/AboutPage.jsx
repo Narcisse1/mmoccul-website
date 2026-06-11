@@ -61,7 +61,7 @@ export const AboutPage = () => {
 <div className='w-2 h-2 rounded-full bg-[#4da3ff] animate-pulse'></div>
 
 <span className='text-white/80 uppercase tracking-[0.25em] text-[11px] font-semibold'>
-ABOUT MMOCCUL
+{t('aboutMmoccul')}
 </span>
 </div>
 
@@ -73,9 +73,7 @@ ABOUT MMOCCUL
               letterSpacing: '-0.02em',
             }}
           >
-            Your Financial Partner
-            <br />
-            for Growth and Success
+            {t('yourFinancialPartner')}
           </h1>
 
         </div>

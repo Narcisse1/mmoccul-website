@@ -29,8 +29,8 @@ export const Header = () => {
 
         {/* Left */}
         <div className="flex items-center gap-8 lg:gap-12">
-          <RouterLink to="/" className="w-12 lg:w-14">
-            <img src={logo} alt="Logo" />
+          <RouterLink to="/" className="w-36 lg:w-42">
+            <img src={logo} alt="Logo" style={{ width: '100%', height: '100%'}} />
           </RouterLink>
 
           {/* Tabs */}
