@@ -4,6 +4,7 @@ import 'aos/dist/aos.css'
 
 import { Link as RouterLink } from 'react-router-dom'
 
+
 import { Header } from '../sections/Header'
 import { Footer } from '../sections/Footer'
 
@@ -57,13 +58,12 @@ export const AboutPage = () => {
         <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center'>
 
            {/* SMALL LABEL */}
-<div className='inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-6'>
-<div className='w-2 h-2 rounded-full bg-[#4da3ff] animate-pulse'></div>
-
-<span className='text-white/80 uppercase tracking-[0.25em] text-[11px] font-semibold'>
-{t('aboutMmoccul')}
-</span>
-</div>
+          <div className='inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-6'>
+            <div className='w-2 h-2 rounded-full bg-[#4da3ff] animate-pulse'></div>
+            <span className='text-white/80 uppercase tracking-[0.25em] text-[11px] font-semibold'>
+              About MMOCCUL
+            </span>
+          </div>
 
            {/* TITLE */}
           <h1
@@ -73,7 +73,7 @@ export const AboutPage = () => {
               letterSpacing: '-0.02em',
             }}
           >
-            {t('yourFinancialPartner')}
+            Your Trusted Financial Partner
           </h1>
 
         </div>
@@ -197,11 +197,11 @@ export const AboutPage = () => {
 
                 <div className='bg-white p-4 shadow-[0_20px_60px_rgba(0,0,0,0.08)] rounded-sm'>
 
-<img
-src={asset2}
-alt='MMOCCUL Banking'
-className='w-full lg:w-[420px] h-[560px] object-cover'
-/>
+                  <img
+                    src={asset2}
+                    alt='MMOCCUL Banking'
+                    className='w-full lg:w-[420px] h-[560px] object-cover'
+                  />
 
                 </div>
 
@@ -242,11 +242,11 @@ className='w-full lg:w-[420px] h-[560px] object-cover'
 
                 <div className='bg-white p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)]'>
 
-<img
-src={asset3}
-alt='Digital Banking'
-className='w-full h-[320px] object-cover'
-/>
+                  <img
+                    src={asset3}
+                    alt='Digital Banking'
+                    className='w-full h-[320px] object-cover'
+                  />
 
                 </div>
 
@@ -381,11 +381,11 @@ className='w-full h-[320px] object-cover'
 
                 <div className='bg-white p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)]'>
 
-<img
-src={asset4}
-alt='MMOCCUL Process'
-className='w-full h-[240px] object-cover'
-/>
+                  <img
+                    src={asset4}
+                    alt='MMOCCUL Process'
+                    className='w-full h-[240px] object-cover'
+                  />
 
                 </div>
 
@@ -443,33 +443,33 @@ className='w-full h-[240px] object-cover'
 
       </section>
 
-{/* ================= CTA SECTION ================= */}
-<section className='relative py-12 overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 z-10'>
-  <div className='absolute inset-0 opacity-10'>
-    <div className='absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]'></div>
-    <div className='absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-400/5 rounded-full blur-[150px]'></div>
-  </div>
-  <div className='max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-20'>
-    <h2 className='text-4xl lg:text-6xl text-slate-900 leading-tight mb-8' style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-      Join Cameroon’s Trusted
-      <span className='block text-[#2436ff]'>
-        Financial Community
-      </span>
-    </h2>
-    <p className='text-slate-800/80 text-lg leading-[2] max-w-3xl mx-auto mb-12' style={{ fontFamily: "'Poppins', sans-serif" }}>
-      Experience secure, modern and people-centered banking designed
-      to help you grow financially with confidence.
-    </p>
-    <div className='flex flex-col sm:flex-row gap-5 justify-center'>
-      <RouterLink to='/create-account' className='bg-[#2436ff] hover:bg-[#1928d9] text-white py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105'>
-        Create Account
-      </RouterLink>
-      <RouterLink to='/branches' className='border border-[#d6d6d6] hover:border-[#2436ff] text-[#1b1b1b] hover:text-[#2436ff] py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300'>
-        Find a Branch
-      </RouterLink>
-    </div>
-  </div>
-</section>
+      {/* ================= CTA SECTION ================= */}
+      <section className='relative py-12 overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 z-10'>
+        <div className='absolute inset-0 opacity-10'>
+          <div className='absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]'></div>
+          <div className='absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-400/5 rounded-full blur-[150px]'></div>
+        </div>
+        <div className='max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-20'>
+          <h2 className='text-4xl lg:text-6xl text-slate-900 leading-tight mb-8' style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Join Cameroon's Trusted
+            <span className='block text-[#2436ff]'>
+              Financial Community
+            </span>
+          </h2>
+          <p className='text-slate-800/80 text-lg leading-[2] max-w-3xl mx-auto mb-12' style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Experience secure, modern and people-centered banking designed
+            to help you grow financially with confidence.
+          </p>
+          <div className='flex flex-col sm:flex-row gap-5 justify-center'>
+            <RouterLink to='/create-account' className='bg-[#2436ff] hover:bg-[#1928d9] text-white py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105'>
+              Create Account
+            </RouterLink>
+            <RouterLink to='/branches' className='border border-[#d6d6d6] hover:border-[#2436ff] text-[#1b1b1b] hover:text-[#2436ff] py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300'>
+              Find a Branch
+            </RouterLink>
+          </div>
+        </div>
+      </section>
 
       <Footer className='relative z-20 mt-[-40px]' />
 
