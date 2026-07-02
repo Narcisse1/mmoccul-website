@@ -3,6 +3,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { IoCloseSharp, IoSearch, IoMenu } from 'react-icons/io5'
 import logo from '../assets/Mmoccul__logo.png'
 import { useLanguage } from '../context/LanguageContext'
+import { HeaderSearch } from '../components/HeaderSearch'
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -79,15 +80,7 @@ export const Header = () => {
           <div className="flex items-center gap-4">
 
 {/* Search */}
-             <div className="relative">
-               <RouterLink 
-                 to="/search" 
-                 className="flex items-center justify-center w-48 rounded-full border border-gray-300 px-4 py-2 text-[14px] focus:outline-none focus:border-blue-900"
-               >
-                 <IoSearch className="text-gray-500" />
-                 <span className="ml-2 text-[13px]">{t('search')}</span>
-               </RouterLink>
-             </div>
+             <HeaderSearch />
 
             {/* Mobile Banking */}
             <a 
@@ -103,20 +96,12 @@ export const Header = () => {
         </div>
 
 {/* Mobile Right */}
-         <div className="flex items-center gap-3 lg:hidden">
-           <div className="relative">
-             <RouterLink 
-               to="/search" 
-               className="flex items-center justify-center"
-             >
-               <IoSearch className="text-xl text-blue-900" />
-               <span className="ml-1 text-[10px]">{t('search')}</span>
-             </RouterLink>
-           </div>
-           <button onClick={() => setMenuOpen(true)} className="text-2xl text-blue-900">
-             <IoMenu />
-           </button>
-         </div>
+        <div className="flex items-center gap-3 lg:hidden">
+          <HeaderSearch />
+          <button onClick={() => setMenuOpen(true)} className="text-2xl text-blue-900">
+            <IoMenu />
+          </button>
+        </div>
       </div>
 
       {/* 🔹 BLUE NAV BAR */}
