@@ -11,7 +11,6 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 
-// Background images
 import heroBg1 from '../assets/assets3/savings.png'
 import heroBg2 from '../assets/assets3/customer_service.png'
 import heroBg3 from '../assets/assets3/mobile_banking.png'
@@ -90,28 +89,29 @@ export const Hero = () => {
   const services = getServices(t)
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    })
+    AOS.init({ duration: 1000, once: true })
   }, [])
 
   // Auto Slide
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 4)
+      setCurrentSlide((prev) => (prev + 1) % slidesData.length)
     }, 6000)
-
     return () => clearInterval(interval)
-  }, [])
+  }, [slidesData.length])
 
-   return (
-     <section
-       id='hero'
-       className='relative w-full overflow-hidden bg-[#f5f5f5] pb-2 sm:pb-4 lg:pb-6'
-     >
-      {/* Slides */}
-      <div className='relative h-[300px] sm:h-[400px] lg:h-[500px]'>
+  return (
+    <section
+      id="hero"
+      className="relative w-full overflow-hidden bg-[#f5f5f5]"
+    >
+      {/* ─── SLIDES ─── */}
+      {/* 
+        Mobile:  420px tall — enough room for heading + description + button
+        Tablet:  480px
+        Desktop: 560px
+      */}
+      <div className="relative h-[420px] sm:h-[480px] lg:h-[560px]">
         {slidesData.map((slide, index) => {
           const isActive = index === currentSlide
           const SlideIcon = slide.icon
@@ -125,64 +125,69 @@ export const Hero = () => {
                   : 'opacity-0 translate-x-10 z-10'
               }`}
             >
-              {/* Background Image */}
+              {/* Background */}
               <div
-                className='absolute inset-0 bg-cover bg-center'
-                style={{
-                  backgroundImage: `url(${slide.bgImage})`,
-                }}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${slide.bgImage})` }}
               />
 
-              {/* Overlay */}
-              <div className='absolute inset-0 bg-black/25'></div>
+              {/* Darker overlay on mobile so white text is always readable */}
+              <div className="absolute inset-0 bg-black/50 sm:bg-black/40 lg:bg-black/30" />
 
-               {/* Content */}
-               <div className='relative z-20 flex items-center h-full px-5 sm:px-8 lg:px-20'>
-                 <div className='max-w-xl text-left'>
-                   {/* Tag */}
-                   <div
-                     data-aos='fade-up'
-                     className='flex items-center gap-2 mb-4'
-                   >
-                     <div className='w-4 h-[2px] bg-[#2436ff]'></div>
-                     <span className='text-[#2436ff] uppercase tracking-wide font-semibold text-xs'>
-                       {slide.tag}
-                     </span>
-                   </div>
+              {/* Slide Content */}
+              <div className="relative z-20 flex items-center h-full px-5 sm:px-10 lg:px-20">
+                <div className="w-full max-w-xl text-left">
 
-                   {/* Heading */}
-                   <h1
-                     data-aos='fade-up'
-                     data-aos-delay='100'
-                     className='text-white lg:text-[48px] md:text-[42px] sm:text-[36px] text-[28px] leading-tight font-extrabold mb-4'
-                   >
-                     <span className='block text-[#0e1630]'>
-                       {slide.title}
-                     </span>
-                     <span className='block text-[#2436ff]'>
-                       {slide.highlight}
-                     </span>
-                   </h1>
+                  {/* Tag */}
+                  <div
+                    data-aos="fade-up"
+                    className="flex items-center gap-2 mb-3"
+                  >
+                    <div className="w-4 h-[2px] bg-[#2436ff]" />
+                    <span className="text-[#a0aaff] uppercase tracking-wide font-semibold text-[10px] sm:text-xs">
+                      {slide.tag}
+                    </span>
+                  </div>
 
-                   {/* Description */}
-                   <p
-                     data-aos='fade-up'
-                     data-aos-delay='200'
-                     className='text-white text-sm sm:text-base leading-relaxed max-w-lg mb-6 font-medium'
-                   >
+                  {/* Heading
+                      Mobile:  26px  (was 28px — slightly tighter for very small screens)
+                      Small:   34px
+                      Medium:  42px
+                      Large:   48px
+                  */}
+                  <h1
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                    className="text-[26px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-tight font-extrabold mb-3 sm:mb-4"
+                  >
+                    <span className="block text-white">
+                      {slide.title}
+                    </span>
+                    <span className="block text-[#6b7fff]">
+                      {slide.highlight}
+                    </span>
+                  </h1>
+
+                  {/* Description — hidden on very small screens to avoid crowding */}
+                  <p
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    className="hidden sm:block text-white/90 text-sm sm:text-base leading-relaxed max-w-lg mb-5 sm:mb-6"
+                  >
                     {slide.description}
                   </p>
 
                   {/* Button */}
-                  <div data-aos='fade-up' data-aos-delay='300'>
+                  <div data-aos="fade-up" data-aos-delay="300">
                     <RouterLink
-                      to='/about'
-                      className='inline-flex items-center gap-2 bg-[#2436ff] hover:bg-[#1727d8] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-xl'
+                      to="/about"
+                      className="inline-flex items-center gap-2 bg-[#2436ff] hover:bg-[#1727d8] text-white px-5 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-xl"
                     >
-                      <SlideIcon size={18} />
+                      <SlideIcon size={16} />
                       {slide.buttonText}
                     </RouterLink>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -190,48 +195,53 @@ export const Hero = () => {
         })}
       </div>
 
-      {/* Floating Service Cards */}
-      <div className='relative z-30 max-w-6xl mx-auto px-5 mt-10 sm:-mt-20 lg:-mt-16'>
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6'>
-{services.map((service, index) => {
-            const Icon = service.icon
-
-            return (
-               <RouterLink
-                  key={index}
-                  to={service.link}
-                  className='group rounded-md shadow-lg px-2 sm:px-3 py-4 sm:py-5 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-[#2436ff] hover:text-white cursor-pointer bg-white text-[#0e1630]'
-                >
-                  <div className='flex justify-center mb-2 sm:mb-3'>
-                    <div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#f4f6ff] group-hover:bg-white/10 transition-colors duration-300'>
-                      <Icon size={16} />
-                    </div>
-                  </div>
-
-                  <h3 className='font-semibold text-xs sm:text-sm'>
-                    {service.title}
-                  </h3>
-               </RouterLink>
-             );
-           })}
-        </div>
-        
-      </div>
-
-      {/* Slide Indicators */}
-      <div className='flex justify-center gap-3 py-10'>
+      {/* ─── SLIDE INDICATORS ─── */}
+      <div className="flex justify-center gap-3 pt-5 pb-4">
         {slidesData.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
             className={`transition-all duration-300 rounded-full ${
               currentSlide === index
-                ? 'w-10 h-3 bg-[#2436ff]'
-                : 'w-3 h-3 bg-gray-300'
+                ? 'w-8 h-2.5 bg-[#2436ff]'
+                : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
             }`}
-          ></button>
+          />
         ))}
       </div>
+
+      {/* ─── SERVICE CARDS ─── */}
+      {/*
+        On mobile: normal flow below the slides (no negative margin — avoids overlap)
+        On desktop: slight negative pull upward to overlap the slide bottom edge
+      */}
+      <div className="relative z-30 max-w-6xl mx-auto px-4 sm:px-6 pb-6 lg:pb-10 lg:-mt-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <RouterLink
+                key={index}
+                to={service.link}
+                data-aos="fade-up"
+                data-aos-delay={index * 80}
+                className="group rounded-xl shadow-md px-3 py-4 sm:py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[#2436ff] hover:text-white bg-white text-[#0e1630]"
+              >
+                <div className="flex justify-center mb-2 sm:mb-3">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-[#eef0ff] group-hover:bg-white/20 transition-colors duration-300">
+                    <Icon size={16} className="sm:w-5 sm:h-5" />
+                  </div>
+                </div>
+                <h3 className="font-semibold text-[11px] sm:text-sm leading-snug">
+                  {service.title}
+                </h3>
+              </RouterLink>
+            )
+          })}
+        </div>
+      </div>
+
     </section>
   )
 }
