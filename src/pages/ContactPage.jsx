@@ -59,7 +59,7 @@ export const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Visit Us</h3>
-                    <p className="text-slate-600">Rond Point Damas, Yaoundé, Cameroon</p>
+                    <p className="text-slate-600">Depot de Bois Damas, Yaoundé, Cameroon</p>
                   </div>
                 </div>
 
@@ -70,7 +70,7 @@ export const ContactPage = () => {
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-1">Call Us</h3>
                     <a href="tel:+237670020630" className="text-cyan-600 hover:text-cyan-700 transition-colors">+237 670 020 630</a>
-                    <p className="text-slate-600 text-sm mt-1">Mon-Fri: 8am - 4:30pm, Sat: 8am - 2pm</p>
+                    <p className="text-slate-600 text-sm mt-1">Mon-Fri: 8am - 4:30pm, Sat: 8am - 4:30pm</p>
                   </div>
                 </div>
 
@@ -99,7 +99,7 @@ export const ContactPage = () => {
 
               <div className="bg-gradient-to-br from-cyan-50 to-sky-50 rounded-2xl p-6 border border-cyan-100">
                 <h3 className="font-semibold text-slate-900 mb-2">Visit Our Headquarters</h3>
-                <p className="text-slate-600 text-sm mb-4">Rond Point Damas, Yaoundé</p>
+                <p className="text-slate-600 text-sm mb-4">Depot de Bois Damas, Yaoundé</p>
                 <a 
                   href="https://www.google.com/maps/place/Yaounde,+Cameroon" 
                   target="_blank" 
@@ -201,7 +201,7 @@ export const ContactPage = () => {
             {[  
               {
                 question: 'What are your operating hours?',
-                answer: 'Most branches operate Monday to Friday from 8:00 AM to 6:00 PM, and Saturday from 8:00 AM to 2:00 PM. Head office in Damas stays open until 6 PM on weekdays. We also offer 24/7 access through our digital banking platform and ATMs.'
+                answer: 'Most branches operate Monday to Friday from 8:00 AM to 4:30 PM, and Saturday from 8:00 AM to 4:30 PM. Head office in Damas stays open until 6 PM on weekdays. We also offer 24/7 access through our digital banking platform and ATMs.'
               },
               {
                 question: 'Which services can I access at any branch?',

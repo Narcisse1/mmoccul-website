@@ -13,9 +13,9 @@ import branchImage5 from '../assets/assets2/1774855672707.jpg'
 const branchList = [
     {
       id: 1, name: 'MMOCCUL Head Office - Damas Yaoundé',
-      address: 'Rond Point Damas, Yaoundé, Cameroon',
+      address: 'Depot de Bois Damas, Yaoundé, Cameroon',
       phone: '+237 670 020 630',
-      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 2:00 PM',
+      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 4:30 PM',
       region: 'Yaoundé', type: 'Head Office',
       services: ['Personal Banking', 'Business Banking', 'Loans', 'Savings', 'International Transfers'],
       image: branchImage1,
@@ -51,7 +51,7 @@ const branchList = [
       id: 4, name: 'MMOCCUL Douala Village Branch',
       address: 'Opposite Tradex Bonne Dix, Douala Village, Cameroon',
       phone: '+237 670 020 630',
-      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 2:00 PM',
+      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 4:30 PM',
       region: 'Douala', type: 'Branch',
       services: ['Business Banking', 'Corporate Services', 'Trade Finance', 'Foreign Exchange'],
       image: branchImage4,
@@ -184,9 +184,9 @@ export const BranchesPage = () => {
   const branchList = [
     {
       id: 1, name: 'MMOCCUL Head Office - Damas Yaoundé',
-      address: 'Rond Point Damas, Yaoundé, Cameroon',
+      address: 'Depot de Bois Damas, Yaoundé, Cameroon',
       phone: '+237 670 020 630',
-      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 2:00 PM',
+      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 4:30 PM',
       region: 'Yaoundé', type: 'Head Office',
       services: ['Personal Banking', 'Business Banking', 'Loans', 'Savings', 'International Transfers'],
       image: branchImage1,
@@ -222,7 +222,7 @@ export const BranchesPage = () => {
       id: 4, name: 'MMOCCUL Douala Village Branch',
       address: 'Opposite Tradex Bonne Dix, Douala Village, Cameroon',
       phone: '+237 670 020 630',
-      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 2:00 PM',
+      hours: 'Mon-Fri: 8:00 AM - 4:30 PM, Sat: 8:00 AM - 4:30 PM',
       region: 'Douala', type: 'Branch',
       services: ['Business Banking', 'Corporate Services', 'Trade Finance', 'Foreign Exchange'],
       image: branchImage4,
