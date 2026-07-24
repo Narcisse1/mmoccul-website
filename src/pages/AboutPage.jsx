@@ -212,7 +212,7 @@ export const AboutPage = () => {
                     className='text-4xl font-semibold text-[#0f4c81] mb-2'
                     style={{ fontFamily: "'Cormorant Garamond', serif" }}
                   >
-                    15,000+
+                    16,000+
                   </div>
 
                   <div

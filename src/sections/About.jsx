@@ -107,7 +107,7 @@ export const About = () => {
                   <div className='grid grid-cols-3 gap-4'>
 
                     <div className='text-center'>
-                      <h3 className='text-[#2436ff] text-2xl font-bold'>14K+</h3>
+                       <h3 className='text-[#2436ff] text-2xl font-bold'>16K+</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
                         {t('members')}
                       </p>
@@ -198,7 +198,7 @@ export const About = () => {
               
               <div className='p-6 text-center hover:bg-slate-50 transition-all duration-300'>
                 <h3 className='text-3xl font-bold text-[#2436ff] mb-2'>
-                  14K+
+                  16K+
                 </h3>
 
                 <p className='text-slate-600 uppercase tracking-[0.2em] text-xs font-semibold'>

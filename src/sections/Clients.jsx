@@ -101,7 +101,7 @@ export const Clients = () => {
           <div data-aos="fade-up" data-aos-delay="350" className='text-center group relative'>
             <div className='relative inline-block mb-4'>
               <h3 className='text-4xl lg:text-5xl font-bold text-white font-poppins group-hover:text-themegreen transition-colors duration-300'>
-                14K+
+                 16K+
               </h3>
               <div className='absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-themegreen to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full'></div>
             </div>
