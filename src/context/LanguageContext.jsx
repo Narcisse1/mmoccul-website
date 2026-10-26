@@ -208,7 +208,6 @@ const translations = {
     contactMmoccul: 'Contact MMOCCUL',
     alwaysHelp: "We're Always Here To Help",
     contactText: 'Get instant assistance for all your banking needs. Our dedicated support team is ready to help you with account inquiries, transactions, and personalized financial guidance.',
-    callUs: 'Call Us',
     emailAddress: 'Email Address',
     
     // Search Page
@@ -294,14 +293,11 @@ const translations = {
     premiumService: 'Premium service across Cameroon',
     headOffice: 'Head Office',
     branchLocations: 'Branch Locations',
-    location: 'Location',
-    phone: 'Phone',
     openingHours: 'Opening Hours',
     getDirections: 'Get Directions',
     needAssistance: 'Need Assistance?',
     assistanceDesc: 'Our dedicated team is ready to assist you with finding the most convenient branch or exploring alternative service options tailored to your needs.',
     contactOurTeam: 'Contact Our Team',
-    exploreServices: 'Explore Services',
   },
   fr: {
     // Header
@@ -477,7 +473,6 @@ const translations = {
     contactMmoccul: 'Contactez MMOCCUL',
     alwaysHelp: 'Nous sommes toujours là pour vous aider',
     contactText: 'Obtenez une assistance instantanée pour tous vos besoins bancaires. Notre équipe de support dédiée est prête à vous aider avec vos demandes de compte, transactions et conseils financiers personnalisés.',
-    callUs: 'Appelez-nous',
     emailAddress: 'Adresse e-mail',
     
     // Search Page
@@ -563,13 +558,10 @@ const translations = {
     premiumService: 'Service premium à travers le Cameroun',
     headOffice: 'Siège Social',
     branchLocations: 'Agences',
-    location: 'Emplacement',
-    phone: 'Téléphone',
     openingHours: 'Heures d\'Ouverture',
     getDirections: 'Obtenir l\'Itinéraire',
     needAssistance: 'Besoin d\'Aide?',
     assistanceDesc: 'Notre équipe dédiée est prête à vous aider à trouver l\'agence la plus pratique ou à explorer d\'autres options de service adaptées à vos besoins.',
     contactOurTeam: 'Contacter Notre Équipe',
-    exploreServices: 'Explorer Nos Services',
   }
 }

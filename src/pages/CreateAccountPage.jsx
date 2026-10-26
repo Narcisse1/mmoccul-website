@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaUser, FaMapMarkerAlt, FaPhone, FaEnvelope, FaBriefcase, FaCamera, FaCheckCircle } from 'react-icons/fa';
+import { FaUser, FaMapMarkerAlt, FaCamera, FaCheckCircle } from 'react-icons/fa';
 import { Header } from '../sections/Header';
 import { Footer } from '../sections/Footer';
 import './CreateAccountPage.css';
@@ -413,7 +413,7 @@ export const CreateAccountPage = () => {
                   className='mt-1 w-5 h-5 text-themegreen border-gray-300 rounded focus:ring-themegreen'
                 />
                 <label htmlFor='acceptTerms' className='text-gray-700'>
-                  I accept the <a href='#' className='text-themegreen hover:underline font-semibold'>Terms and Conditions</a> and understand that my information will be used in accordance with MMOCCUL's privacy policy. <span className='text-red-500'>*</span>
+                  I accept the <span className='font-semibold'>Terms and Conditions</span> and understand that my information will be used in accordance with MMOCCUL's privacy policy. <span className='text-red-500'>*</span>
                 </label>
               </div>
               {errors.acceptTerms && <p className='text-red-500 text-sm mt-1'>{errors.acceptTerms}</p>}

@@ -1,14 +1,7 @@
-import { GiReceiveMoney, GiTakeMyMoney, GiMoneyStack } from "react-icons/gi"
-import { AiOutlineProject } from "react-icons/ai"
-import { BsBank2, BsCashCoin } from "react-icons/bs";
-import { MdSavings, MdOutlineAccountBalance, MdAccountBalance, MdSecurity, MdSpeed, MdSupportAgent, MdAttachMoney } from "react-icons/md";
-import { FaMobileAlt, FaChild, FaBriefcase, FaUsers, FaChartLine, FaHandshake, FaArrowRight } from "react-icons/fa";
-import { TbTransfer } from "react-icons/tb";
+import { GiTakeMyMoney, GiMoneyStack } from "react-icons/gi"
+import { MdSavings, MdAccountBalance, MdAttachMoney } from "react-icons/md";
+import { FaMobileAlt, FaChild, FaBriefcase, FaUsers, FaArrowRight } from "react-icons/fa";
 import { RiBankFill } from "react-icons/ri";
-
-import { IoMdCloudDone } from "react-icons/io";
-import { SiCyberdefenders } from "react-icons/si";
-import { FaUserEdit } from "react-icons/fa";
 import project1 from  '../src/assets/project1.jpg'
 import project2 from  '../src/assets/project2.jpg'
 import project3 from  '../src/assets/project3.jpg'
