@@ -1,478 +1,384 @@
-import React, { useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-import { Link as RouterLink } from 'react-router-dom'
-
-
+import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BadgeCheck,
+  Banknote,
+  Building2,
+  Check,
+  Clock3,
+  Eye,
+  HeartHandshake,
+  Landmark,
+  MapPin,
+  ShieldCheck,
+  Smartphone,
+  Target,
+  Users,
+} from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 import { Header } from '../sections/Header'
 import { Footer } from '../sections/Footer'
+import { useHeroParallax } from '../hooks/useHeroParallax'
+import { usePointerAtmosphere } from '../hooks/usePointerAtmosphere'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+import aboutImage from '../assets/assets3/about_us.png'
+import communityImage from '../assets/assets3/community.png'
+import interiorImage from '../assets/assets3/interior.png'
+import cobacCrestImage from '../assets/assets4/optimized/cobac-crest.png'
+import teamPortraitImage from '../assets/assets4/MMOCCUL Blue Attire Team Portrait (1).png'
+import appWomanImage from '../assets/assets4/Smiling Woman Presenting Finance App.png'
+import uniformPortraitImage from '../assets/assets4/Branded Blue Uniform Portrait.png'
+import patternedPortraitImage from '../assets/assets4/Smiling Man in Blue Patterned Outfit.png'
+import { branches } from '../data/branches'
+import './AboutPage.css'
 
-import aboutImg from '../assets/about.jpg'
-import asset1 from '../assets/assets2/1774855672518.jpg'
-import asset2 from '../assets/assets3/about_us.png'
-import asset3 from '../assets/assets3/interior.png'
-import asset4 from '../assets/assets3/together.png'
+const impactStats = [
+  { value: 26000, suffix: '+', label: 'Active members', icon: Users },
+  { value: branches.length, suffix: '+', label: 'Branches nationwide', icon: MapPin },
+  { value: 5000, suffix: '+', label: 'Loans disbursed', icon: Banknote },
+  { value: 10, suffix: '', label: 'Years of service', icon: Clock3 },
+  { value: 5, suffix: '+', label: 'Regions covered', icon: Building2 },
+]
 
+const principles = [
+  {
+    title: 'Our vision',
+    description: 'To make financial services accessible and affordable to everyone in Cameroon and beyond.',
+    icon: Eye,
+  },
+  {
+    title: 'Our mission',
+    description: 'To provide reliable, transparent, and innovative financial solutions that empower our members to improve their economic and social well-being.',
+    icon: Target,
+  },
+  {
+    title: 'Our values',
+    description: 'Reliability, honesty, transparency, participation, accountability, and confidentiality guide the way we serve.',
+    icon: HeartHandshake,
+  },
+]
 
+const milestones = [
+  {
+    year: '2016',
+    title: 'A cooperative begins',
+    description: 'MMOCCUL was founded in Mmockmbie, Alou Subdivision, with a community of 14 members.',
+    icon: Landmark,
+  },
+  {
+    year: '2017',
+    title: 'Opening in Yaoundé',
+    description: 'The cooperative opened its Yaoundé branch and began serving members beyond its founding community.',
+    icon: MapPin,
+  },
+  {
+    year: 'Growing across Cameroon',
+    title: 'A wider branch network',
+    description: 'Our presence expanded to Douala, Bafoussam, Bamenda, Buea, Dschang, Kumba, Bertoua, and Kribi.',
+    icon: Building2,
+  },
+  {
+    year: 'Today',
+    title: 'Serving more members',
+    description: 'We continue to grow our membership and develop convenient digital services for communities across Cameroon.',
+    icon: Smartphone,
+  },
+]
+
+const differentiators = [
+  { title: 'Member-owned institution', description: 'Members are at the heart of our cooperative and the services we provide.', icon: Users },
+  { title: 'COBAC licensed & regulated', description: 'We operate as a Category 1 Microfinance Institution licensed by COBAC.', icon: ShieldCheck },
+  { title: 'Competitive interest rates', description: 'Savings and lending options are designed with member needs in mind.', icon: Banknote },
+  { title: 'Fast loan processing', description: 'Clear guidance helps members navigate their financing needs.', icon: Clock3 },
+  { title: 'Growing digital banking', description: 'Digital services make everyday banking more convenient.', icon: Smartphone },
+  { title: 'Strong customer focus', description: 'Our team is committed to friendly, reliable support.', icon: HeartHandshake },
+  { title: 'Nationwide branch network', description: 'Branches connect members with services in communities across Cameroon.', icon: MapPin },
+  { title: 'Transparent operations', description: 'We value clear communication, accountability, and trust.', icon: BadgeCheck },
+]
+
+const AboutHeading = ({ eyebrow, title, description, align = 'center', light = false }) => (
+  <div className={`about-heading about-reveal${align === 'left' ? ' about-heading--left' : ''}${light ? ' about-heading--light' : ''}`}>
+    <span className="about-heading__eyebrow">{eyebrow}</span>
+    <h2>{title}</h2>
+    {description && <p>{description}</p>}
+  </div>
+)
 
 export const AboutPage = () => {
+  const pageRef = useRef(null)
+  const [counters, setCounters] = useState(impactStats.map(() => 0))
+  const [typedCharacters, setTypedCharacters] = useState(0)
+  const title = 'Who We Are'
+
+  useHeroParallax(pageRef)
+  usePointerAtmosphere(pageRef)
+  useRevealOnScroll(pageRef, '.about-reveal')
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: 'ease-in-out',
-    })
+    const page = pageRef.current
+    if (!page) return undefined
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const stats = page.querySelector('.about-stat-grid')
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      setCounters(impactStats.map((stat) => stat.value))
+      return undefined
+    }
+
+    let frameId
+    let counterObserver
+    if (stats) {
+      counterObserver = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return
+        counterObserver.disconnect()
+        const start = performance.now()
+        const duration = 1500
+        const animate = (now) => {
+          const progress = Math.min((now - start) / duration, 1)
+          const eased = 1 - (1 - progress) ** 3
+          setCounters(impactStats.map((stat) => Math.round(stat.value * eased)))
+          if (progress < 1) frameId = requestAnimationFrame(animate)
+        }
+        frameId = requestAnimationFrame(animate)
+      }, { threshold: 0.25 })
+      counterObserver.observe(stats)
+    }
+    return () => {
+      counterObserver?.disconnect()
+      if (frameId) cancelAnimationFrame(frameId)
+    }
   }, [])
 
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTypedCharacters(title.length)
+      return undefined
+    }
+    if (typedCharacters >= title.length) return undefined
+
+    const timer = window.setTimeout(() => {
+      setTypedCharacters((count) => Math.min(count + 1, title.length))
+    }, 75)
+    return () => window.clearTimeout(timer)
+  }, [title.length, typedCharacters])
+
   return (
-    <div className='bg-[#f5f9ff] min-h-screen overflow-hidden'>
-
+    <div className="about-page" ref={pageRef}>
       <Header />
-
-      {/* ================= HERO SECTION ================= */}
-
-      <section className='relative w-full overflow-hidden pt-8 lg:pt-12 pb-24 lg:pb-28'>
-
-        {/* BACKGROUND IMAGE */}
-        <div
-          className='absolute inset-0 bg-cover bg-center scale-105'
-          style={{
-            backgroundImage: `url(${asset1})`,
-          }}
-        />
-
-        {/* DARK OVERLAY */}
-        <div className='absolute inset-0 bg-[#071120]/40'></div>
-
-        {/* BLUE GRADIENT */}
-        <div className='absolute inset-0 bg-gradient-to-r from-[#081120]/50 via-[#081120]/35 to-[#0f172a]/30'></div>
-
-        {/* LIGHT EFFECTS */}
-        <div className='absolute top-[-120px] left-[-120px] w-[350px] h-[350px] bg-blue-500/20 blur-[120px] rounded-full'></div>
-
-        <div className='absolute bottom-[-120px] right-[-120px] w-[350px] h-[350px] bg-cyan-400/20 blur-[120px] rounded-full'></div>
-
-        {/* CONTENT */}
-        <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center'>
-
-           {/* SMALL LABEL */}
-          <div className='inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-6'>
-            <div className='w-2 h-2 rounded-full bg-[#4da3ff] animate-pulse'></div>
-            <span className='text-white/80 uppercase tracking-[0.25em] text-[11px] font-semibold'>
-              About MMOCCUL
-            </span>
+      <main>
+        <section className="about-hero" aria-labelledby="about-hero-title">
+          <div className="about-hero__image" style={{ backgroundImage: `url(${communityImage})` }} aria-hidden="true" />
+          <div className="about-hero__veil" aria-hidden="true" />
+          <div className="about-shell about-hero__content">
+            <span className="about-kicker about-kicker--hero"><i /> About MMOCCUL</span>
+            <h1 id="about-hero-title" aria-label={title}>
+              {title.slice(0, typedCharacters)}
+              {typedCharacters < title.length && <span className="about-hero__cursor" aria-hidden="true" />}
+            </h1>
+            <p>A member-owned Category 1 Microfinance Institution building financial inclusion across Cameroon since 2016.</p>
+            <div className="about-hero__trust" aria-label="MMOCCUL credentials">
+              <span><ShieldCheck size={16} /> COBAC Licensed</span>
+              <i />
+              <span><BadgeCheck size={16} /> MINFI Registered</span>
+              <i />
+              <span><Clock3 size={16} /> Since 2016</span>
+            </div>
           </div>
+          <div className="about-hero__bottom" aria-hidden="true" />
+        </section>
 
-           {/* TITLE */}
-          <h1
-            className='text-white text-3xl md:text-4xl lg:text-5xl font-semibold leading-relaxed mb-4'
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Your Trusted Financial Partner
-          </h1>
-
-        </div>
-
-        {/* CURVED BOTTOM */}
-        <div className='absolute bottom-0 left-0 w-full overflow-hidden leading-[0]'>
-          <svg
-            className='relative block w-[calc(100%+1.3px)] h-[80px]'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 1440 320'
-            preserveAspectRatio='none'
-          >
-            <path
-              fill='#f5f9ff'
-              d='M0,256L80,245.3C160,235,320,213,480,208C640,203,800,213,960,224C1120,235,1280,245,1360,250.7L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'
-            ></path>
-          </svg>
-        </div>
-
-      </section>
-
-      {/* ===================== ELEGANT ABOUT SECTION ===================== */}
-
-      <section className='relative py-28 overflow-hidden'>
-
-        {/* SOFT BACKGROUND EFFECTS */}
-        <div className='absolute top-0 left-0 w-[500px] h-[500px] bg-blue-400/10 blur-[140px] rounded-full'></div>
-
-        <div className='absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-300/20 blur-[140px] rounded-full'></div>
-
-        <div className='max-w-7xl mx-auto px-6 lg:px-8 relative z-10'>
-
-          {/* ===================== TOP SECTION ===================== */}
-
-          <div className='grid lg:grid-cols-2 gap-16 items-start mb-28'>
-
-            {/* LEFT CONTENT */}
-            <div data-aos='fade-right'>
-
-              <div className='mb-8'>
-                <span
-                  className='uppercase tracking-[0.35em] text-[12px] text-[#1e88e5] font-semibold'
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  About MMOCCUL
-                </span>
+        <section className="about-story about-section">
+          <div className="about-shell about-story__grid">
+            <div className="about-story__visual about-reveal">
+              <div className="about-story__photo">
+                <img src={aboutImage} alt="A member-focused MMOCCUL service environment" />
               </div>
-
-              <h2
-                className='text-[2.8rem] lg:text-[4rem] leading-[1.15] text-[#0f4c81] mb-10 font-medium'
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  letterSpacing: '-0.03em',
-                }}
-              >
-                Empowering Financial
-                <span className='block'>
-                  Growth With Trust,
-                </span>
-
-                <span className='block text-[#1e88e5]'>
-                  Innovation & Excellence.
-                </span>
-              </h2>
-
-              <div className='space-y-7'>
-
-                <p
-                  className='text-[17px] leading-[2] text-[#5f6f81]'
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  MMOCCUL (Mmockmbie Credit Union Cooperative Ltd) is a fully accredited
-                  Category 1 Microfinance Institution incorporated in 2016 and recognized
-                  for delivering trusted, member-focused financial services across Cameroon.
-                </p>
-
-                <p
-                  className='text-[17px] leading-[2] text-[#5f6f81]'
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Built on integrity and innovation, MMOCCUL has become one of the
-                  fastest-growing and most digital-friendly financial cooperatives,
-                  empowering thousands of individuals, families, and businesses with
-                  secure banking solutions and sustainable financial opportunities.
-                </p>
-
+              <div className="about-story__badge">
+                <span><Users size={19} /></span>
+                <strong>26,000+</strong>
+                <small>members growing together</small>
               </div>
-
-              {/* SIGNATURE */}
-              <div className='mt-14 flex items-center gap-8'>
-
-                <div>
-
-                  <div
-                    className='text-[#1e88e5] text-lg mb-2'
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                  >
-                    Trusted Financial Institution
-                  </div>
-
-                  <div
-                    className='text-[#0f4c81] text-3xl'
-                    style={{ fontFamily: "'Great Vibes', cursive" }}
-                  >
-                    MMOCCUL
-                  </div>
-
-                </div>
-
-              </div>
-
+              <span className="about-story__ornament" aria-hidden="true" />
             </div>
-
-            {/* RIGHT IMAGE */}
-            <div
-              data-aos='fade-left'
-              className='relative flex justify-center lg:justify-end'
-            >
-
-              <div className='relative'>
-
-                <div className='bg-white p-4 shadow-[0_20px_60px_rgba(0,0,0,0.08)] rounded-sm'>
-
-                  <img
-                    src={asset2}
-                    alt='MMOCCUL Banking'
-                    className='w-full lg:w-[420px] h-[560px] object-cover'
-                  />
-
-                </div>
-
-                {/* FLOATING CARD */}
-                <div className='absolute -bottom-10 -left-10 bg-[#eef5ff] px-8 py-6 shadow-xl border border-[#d7e8ff]'>
-
-                  <div
-                    className='text-4xl font-semibold text-[#0f4c81] mb-2'
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                  >
-                    16,000+
-                  </div>
-
-                  <div
-                    className='text-[#5f6f81] uppercase tracking-[0.18em] text-[11px]'
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    Active Members
-                  </div>
-
-                </div>
-
+            <div className="about-story__copy about-reveal" style={{ '--about-delay': '100ms' }}>
+              <span className="about-kicker">Our story</span>
+              <h2>Rooted in community.<br /><em>Growing together.</em></h2>
+              <p>
+                Mmockmbie Credit Union Cooperative Ltd (MMOCCUL) is a Category 1 Microfinance Institution licensed by COBAC and registered with the Ministry of Finance. Founded in 2016 in Mmockmbie, Alou Subdivision, we started with just 14 members. Today we proudly serve over 26,000 members across multiple regions of Cameroon.
+              </p>
+              <p>
+                We are fully member-owned and member-driven. Our mission is to provide accessible, affordable, and reliable financial services that empower individuals, families, and small businesses.
+              </p>
+              <div className="about-story__assurance">
+                <img src={cobacCrestImage} alt="COBAC gold security crest" loading="lazy" decoding="async" />
+                <span><strong>COBAC Licensed · Secure · Built for Members</strong><small>Serving members under COBAC regulation</small></span>
               </div>
-
+              <Link className="about-button about-button--blue" to="/services">
+                Explore our services <ArrowRight size={17} />
+              </Link>
             </div>
-
           </div>
+        </section>
 
-          {/* ===================== SERVICES STYLE SECTION ===================== */}
-
-           <div className='space-y-12'>
-
-            {/* BLOCK 1 */}
-            <div className='grid lg:grid-cols-2 gap-16 items-center'>
-
-              {/* IMAGE */}
-              <div data-aos='fade-right'>
-
-                <div className='bg-white p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)]'>
-
-                  <img
-                    src={asset3}
-                    alt='Digital Banking'
-                    className='w-full h-[320px] object-cover'
-                  />
-
-                </div>
-
-              </div>
-
-              {/* CONTENT */}
-              <div
-                data-aos='fade-left'
-                className='bg-[#eef5ff] p-12'
-              >
-
-                <h3
-                  className='text-5xl text-[#0f4c81] mb-6 leading-tight'
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                  }}
-                >
-                  Digital Banking
-                </h3>
-
-                <p
-                  className='text-[#5f6f81] leading-[2] text-[16px] mb-8'
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Experience modern financial convenience with our secure and innovative
-                  mobile and online banking platforms designed to simplify everyday banking.
-                </p>
-
-                <RouterLink
-                  to='/services'
-                  className='text-[#1e88e5] uppercase tracking-[0.15em] text-[12px] font-semibold border-b border-[#1e88e5] pb-1 hover:opacity-70 transition'
-                >
-                  Explore Services
-                </RouterLink>
-
-              </div>
-
+        <section className="about-principles about-section">
+          <div className="about-shell">
+            <AboutHeading
+              eyebrow="What guides us"
+              title="Purpose in every partnership"
+              description="Our vision, mission, and values shape how we serve members and strengthen communities."
+            />
+            <div className="about-principles__grid">
+              {principles.map(({ title: cardTitle, description, icon: Icon }, index) => (
+                <article className="about-principle-card about-reveal" key={cardTitle} style={{ '--about-delay': `${index * 80}ms` }}>
+                  <span className="about-principle-card__icon"><Icon size={23} /></span>
+                  <span className="about-principle-card__index">0{index + 1}</span>
+                  <h3>{cardTitle}</h3>
+                  <p>{description}</p>
+                  <span className="about-principle-card__rule" />
+                </article>
+              ))}
             </div>
-
-            {/* BLOCK 2 */}
-            <div className='grid lg:grid-cols-2 gap-16 items-center'>
-
-              {/* CONTENT */}
-              <div
-                data-aos='fade-right'
-                className='bg-[#eef5ff] p-12 order-2 lg:order-1'
-              >
-
-                <h3
-                  className='text-5xl text-[#0f4c81] mb-6 leading-tight'
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                  }}
-                >
-                  Savings & Loans
-                </h3>
-
-                <p
-                  className='text-[#5f6f81] leading-[2] text-[16px] mb-8'
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Grow your finances confidently through competitive savings plans,
-                  investment opportunities, and flexible loan packages tailored to your goals.
-                </p>
-
-                <RouterLink
-                  to='/loans'
-                  className='text-[#1e88e5] uppercase tracking-[0.15em] text-[12px] font-semibold border-b border-[#1e88e5] pb-1 hover:opacity-70 transition'
-                >
-                  Learn More
-                </RouterLink>
-
-              </div>
-
-              {/* IMAGE */}
-              <div
-                data-aos='fade-left'
-                className='order-1 lg:order-2'
-              >
-
-                <div className='bg-white p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)]'>
-
-                  <img
-                    src={aboutImg}
-                    alt='Savings'
-                    className='w-full h-[320px] object-cover'
-                  />
-
-                </div>
-
-              </div>
-
-            </div>
-
           </div>
+        </section>
 
-           {/* ===================== PROCESS SECTION ===================== */}
-           <div className='mt-12'>
-
-             <div className='grid lg:grid-cols-[320px,1fr] gap-12 items-center mb-8'>
-
-              {/* LEFT */}
-              <div
-                data-aos='fade-right'
-                className='bg-[#eef5ff] p-10'
-              >
-
-                <div
-                  className='text-5xl leading-tight text-[#0f4c81] mb-5'
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                  }}
-                >
-                  Our Banking
-                  <span className='block'>
-                    Process
-                  </span>
-                </div>
-
-                <p
-                  className='text-[#5f6f81] leading-[2]'
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Delivering modern, secure and people-focused financial experiences
-                  tailored to your success.
-                </p>
-
-              </div>
-
-              {/* IMAGE */}
-              <div data-aos='fade-left'>
-
-                <div className='bg-white p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)]'>
-
-                  <img
-                    src={asset4}
-                    alt='MMOCCUL Process'
-                    className='w-full h-[240px] object-cover'
-                  />
-
-                </div>
-
-              </div>
-
-            </div>
-
-             {/* PROCESS CARDS */}
-             <div className='grid md:grid-cols-3 gap-4'>
-
-              {[
-                {
-                  title: 'Consultation',
-                  desc: 'Understanding your financial goals and helping you choose the right banking solutions.',
-                },
-                {
-                  title: 'Coordination',
-                  desc: 'Providing seamless support, account management and digital financial assistance.',
-                },
-                {
-                  title: 'Execution',
-                  desc: 'Delivering secure transactions, financial growth and reliable banking experiences.',
-                },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  data-aos='fade-up'
-                  data-aos-delay={index * 100}
-                >
-
-                  <h3
-                    className='text-4xl text-[#0f4c81] mb-5'
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p
-                    className='text-[#5f6f81] leading-[2]'
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {item.desc}
-                  </p>
-
+        <section className="about-impact about-section">
+          <div className="about-impact__glow about-impact__glow--one" aria-hidden="true" />
+          <div className="about-impact__glow about-impact__glow--two" aria-hidden="true" />
+          <div className="about-shell about-impact__inner">
+            <AboutHeading
+              eyebrow="Growing with Cameroon"
+              title="Our impact, in numbers"
+              description="A decade of cooperative progress, built one member and one community at a time."
+              light
+            />
+            <div className="about-stat-grid">
+              {impactStats.map(({ value, suffix, label, icon: Icon }, index) => (
+                <div className="about-stat about-reveal" key={label} style={{ '--about-delay': `${index * 60}ms` }}>
+                  <span className="about-stat__icon"><Icon size={20} /></span>
+                  <strong>{counters[index].toLocaleString()}<i>{suffix}</i></strong>
+                  <span className="about-stat__label">{label}</span>
+                  <span className="about-stat__bar"><i style={{ '--about-progress': `${Math.max(26, ((index + 2) / impactStats.length) * 100)}%` }} /></span>
                 </div>
               ))}
-
             </div>
-
+            <div className="about-impact__foot">
+              <span><span /> Member-owned progress</span>
+              <span>Since 2016 <ArrowRight size={14} /> and moving forward</span>
+            </div>
           </div>
+        </section>
 
-        </div>
-
-      </section>
-
-      {/* ================= CTA SECTION ================= */}
-      <section className='relative py-12 overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 z-10'>
-        <div className='absolute inset-0 opacity-10'>
-          <div className='absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]'></div>
-          <div className='absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-400/5 rounded-full blur-[150px]'></div>
-        </div>
-        <div className='max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-20'>
-          <h2 className='text-4xl lg:text-6xl text-slate-900 leading-tight mb-8' style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Join Cameroon's Trusted
-            <span className='block text-[#2436ff]'>
-              Financial Community
-            </span>
-          </h2>
-          <p className='text-slate-800/80 text-lg leading-[2] max-w-3xl mx-auto mb-12' style={{ fontFamily: "'Poppins', sans-serif" }}>
-            Experience secure, modern and people-centered banking designed
-            to help you grow financially with confidence.
-          </p>
-          <div className='flex flex-col sm:flex-row gap-5 justify-center'>
-            <RouterLink to='/create-account' className='bg-[#2436ff] hover:bg-[#1928d9] text-white py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105'>
-              Create Account
-            </RouterLink>
-            <RouterLink to='/branches' className='border border-[#d6d6d6] hover:border-[#2436ff] text-[#1b1b1b] hover:text-[#2436ff] py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300'>
-              Find a Branch
-            </RouterLink>
+        <section className="about-journey about-section">
+          <div className="about-shell">
+            <div className="about-journey__intro about-reveal">
+              <span className="about-kicker">Our journey</span>
+              <h2>From 14 members<br />to a nationwide community.</h2>
+              <p>Our growth reflects the trust of members and the work of communities coming together around shared financial progress.</p>
+              <div className="about-journey__image">
+                <img src={interiorImage} alt="Inside an MMOCCUL member service location" />
+                <span><Landmark size={16} /> Built around people since 2016</span>
+              </div>
+            </div>
+            <div className="about-timeline">
+              {milestones.map(({ year, title: milestoneTitle, description, icon: Icon }, index) => (
+                <article className="about-timeline__item about-reveal" key={year} style={{ '--about-delay': `${index * 70}ms` }}>
+                  <div className="about-timeline__marker"><Icon size={18} /></div>
+                  <div className="about-timeline__content">
+                    <span className="about-timeline__year">{year}</span>
+                    <h3>{milestoneTitle}</h3>
+                    <p>{description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer className='relative z-20 mt-[-40px]' />
+        <section className="about-why about-section">
+          <div className="about-shell">
+            <AboutHeading
+              eyebrow="The MMOCCUL difference"
+              title="A cooperative that puts members first"
+              description="Reliable service, practical financial solutions, and a commitment to inclusion—grounded in cooperative values."
+            />
+            <div className="about-why__grid">
+              {differentiators.map(({ title: itemTitle, description, icon: Icon }, index) => (
+                <article className="about-why-card about-reveal" key={itemTitle} style={{ '--about-delay': `${(index % 4) * 55}ms` }}>
+                  <span className="about-why-card__icon"><Icon size={20} /></span>
+                  <div>
+                    <h3>{itemTitle}</h3>
+                    <p>{description}</p>
+                  </div>
+                  <ArrowUpRight className="about-why-card__arrow" size={16} />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
+        <section className="about-culture about-section">
+          <div className="about-shell">
+            <AboutHeading
+              eyebrow="Our people, our community"
+              title="A cooperative rooted in Cameroon"
+              description="Our members and ambassadors reflect the communities MMOCCUL is proud to serve."
+            />
+            <div className="about-culture__grid">
+              {[
+                { image: appWomanImage, alt: 'MMOCCUL ambassador presenting mobile banking', caption: 'Banking made more accessible' },
+                { image: uniformPortraitImage, alt: 'MMOCCUL community ambassador in branded attire', caption: 'Proud to serve our members' },
+                { image: patternedPortraitImage, alt: 'MMOCCUL community ambassador in blue attire', caption: 'Local identity, shared progress' },
+              ].map(({ image, alt, caption }, index) => (
+                <figure className="about-culture__item about-reveal" key={caption} style={{ '--about-delay': `${index * 75}ms` }}>
+                  <img src={image} alt={alt} loading="lazy" decoding="async" />
+                  <figcaption>{caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="about-governance about-section">
+          <div className="about-shell about-governance__panel about-reveal">
+            <div className="about-governance__visual">
+              <img src={teamPortraitImage} alt="Eight MMOCCUL team members in branded attire" loading="lazy" decoding="async" />
+              <span><Users size={18} /> Meet the people behind MMOCCUL</span>
+            </div>
+            <div className="about-governance__copy">
+              <span className="about-kicker">Leadership & governance</span>
+              <h2>Responsible leadership.<br /><em>Shared purpose.</em></h2>
+              <p>MMOCCUL is guided by a Board and supported by a General Manager and professional team. Together, they work to uphold responsible governance, regulatory compliance, and the cooperative’s commitment to its members.</p>
+              <div className="about-governance__points">
+                <span><Check size={15} /> Board oversight</span>
+                <span><Check size={15} /> Professional management</span>
+                <span><Check size={15} /> Member-focused accountability</span>
+              </div>
+              <Link className="about-text-link" to="/contact">Connect with our team <ArrowRight size={16} /></Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="about-cta">
+          <div className="about-cta__pattern" aria-hidden="true" />
+          <div className="about-shell about-cta__inner about-reveal">
+            <span className="about-kicker about-kicker--hero"><i /> Your next chapter starts here</span>
+            <h2>Ready to join the<br /><em>MMOCCUL family?</em></h2>
+            <p>Become a member today and experience reliable, member-focused financial services.</p>
+            <div className="about-cta__actions">
+              <Link className="about-button about-button--gold" data-pointer-effect="magnetic" to="/create-account">Become a Member <ArrowRight size={17} /></Link>
+              <Link className="about-button about-button--outline" to="/branches">Find a Branch <MapPin size={16} /></Link>
+              <Link className="about-cta__contact" to="/contact">Contact Us <ArrowUpRight size={15} /></Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+      <a className="about-whatsapp" href="https://wa.me/237680485488" target="_blank" rel="noopener noreferrer" aria-label="Chat with MMOCCUL on WhatsApp">
+        <FaWhatsapp size={23} />
+      </a>
     </div>
   )
 }

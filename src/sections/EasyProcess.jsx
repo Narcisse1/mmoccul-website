@@ -53,14 +53,14 @@ export const EasyProcess = () => {
     <section className="w-full bg-white py-20 px-4">
       <div className="max-w-[1100px] mx-auto text-center">
         <h2 
-          className="font-['Playfair_Display'] text-[clamp(2rem,5vw,3.2rem)] font-semibold text-[#1A3A6B] tracking-[-0.5px] mb-[14px] opacity-0 animate-fade-up"
+          className="font-['Playfair_Display'] text-[clamp(2rem,5vw,3.2rem)] font-semibold text-[#002E8A] tracking-[-0.5px] mb-[14px] opacity-0 animate-fade-up"
           style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
         >
           {t('weMakeLifeEasy')}
         </h2>
 
         <p 
-          className="text-[clamp(1rem,2.5vw,1.35rem)] font-normal text-[#1A3A6B] mb-[36px] opacity-0 animate-fade-up"
+          className="text-[clamp(1rem,2.5vw,1.35rem)] font-normal text-slate-600 mb-[36px] opacity-0 animate-fade-up"
           style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
         >
           {t('openAccountNow')}
@@ -71,7 +71,7 @@ export const EasyProcess = () => {
           style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
         >
           <div className="h-[1.5px] flex-1 bg-[#cdd8ec]"></div>
-          <div className="w-[8px] h-[8px] bg-[#1A3A6B] rounded-full mx-[2px]"></div>
+          <div className="w-[8px] h-[8px] bg-[#D4A735] rounded-full mx-[2px]"></div>
           <div className="h-[1.5px] flex-1 bg-[#cdd8ec]"></div>
         </div>
 
@@ -86,9 +86,9 @@ export const EasyProcess = () => {
               }}
             >
               <div 
-                className="w-[90px] h-[90px] rounded-full border-[1.5px] border-[#1A3A6B] flex items-center justify-center bg-white transition-all duration-300 cursor-default hover:bg-[#EEF3FB] hover:-translate-y-1"
+                className="w-[90px] h-[90px] rounded-[28px] border border-slate-200 shadow-[0_8px_25px_rgba(0,46,138,0.07)] flex items-center justify-center bg-white transition-all duration-300 cursor-default hover:border-[#D4A735] hover:bg-[#FFF9EB] hover:-translate-y-1"
               >
-                <div className="w-[36px] h-[36px] text-[#1A3A6B]">
+                <div className="w-[36px] h-[36px] text-[#002E8A]">
                   {step.icon}
                 </div>
               </div>
@@ -101,7 +101,7 @@ export const EasyProcess = () => {
 
         <button
           onClick={handleOpenAccount}
-          className="inline-block bg-[#1A3A6B] text-white font-['DM_Sans'] text-[0.95rem] font-medium tracking-[0.03em] py-4 px-11 border-none rounded-[3px] cursor-pointer transition-all duration-250 hover:bg-[#0f2548] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(26,58,107,0.25)] opacity-0 animate-fade-up"
+          className="inline-block bg-[#002E8A] text-white font-['DM_Sans'] text-[0.95rem] font-medium tracking-[0.03em] py-4 px-11 border-none rounded-full cursor-pointer transition-all duration-300 hover:bg-[#0A3C9D] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,46,138,0.22)] opacity-0 animate-fade-up"
           style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}
         >
           {t('openAnAccount')}

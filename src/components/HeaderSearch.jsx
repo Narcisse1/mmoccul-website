@@ -70,10 +70,10 @@ export const HeaderSearch = () => {
   }
 
   return (
-    <div className="relative" ref={wrapperRef}>
+    <div className="relative header-search" ref={wrapperRef}>
       <form
         onSubmit={handleSubmit}
-        className={`flex items-center w-48 lg:w-64 rounded-full border px-4 py-2 transition-colors ${
+        className={`header-search-form flex items-center w-32 lg:w-64 rounded-full border px-4 py-2 transition-colors ${
           open ? 'border-blue-900 shadow-sm' : 'border-gray-300'
         }`}
       >
@@ -105,7 +105,7 @@ export const HeaderSearch = () => {
       </form>
 
       {open && query.trim() && (
-        <div className="absolute left-0 right-0 mt-2 bg-white rounded-2xl border border-slate-100 shadow-xl overflow-hidden z-50 min-w-[340px] max-h-[420px] overflow-y-auto">
+        <div className="header-search-results absolute left-auto right-0 mt-2 bg-white rounded-2xl border border-slate-100 shadow-xl overflow-hidden z-50 w-[min(340px,calc(100vw-2rem))] max-h-[420px] overflow-y-auto">
           {results.length === 0 ? (
             <div className="px-5 py-8 text-sm text-slate-500 text-center">
               No results for "{query.trim()}"

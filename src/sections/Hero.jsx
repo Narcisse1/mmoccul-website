@@ -108,10 +108,10 @@ export const Hero = () => {
    return (
      <section
        id='hero'
-       className='relative w-full overflow-hidden bg-[#f5f5f5] pb-2 sm:pb-4 lg:pb-6'
+       className='relative w-full overflow-hidden bg-[#F5F7FA] pb-8 sm:pb-10 lg:pb-12'
      >
       {/* Slides */}
-      <div className='relative h-[300px] sm:h-[400px] lg:h-[500px]'>
+      <div className='relative h-[390px] sm:h-[470px] lg:h-[560px]'>
         {slidesData.map((slide, index) => {
           const isActive = index === currentSlide
           const SlideIcon = slide.icon
@@ -133,8 +133,9 @@ export const Hero = () => {
                 }}
               />
 
-              {/* Overlay */}
-              <div className='absolute inset-0 bg-black/25'></div>
+              {/* Brand-tinted overlay keeps the image readable without a dark section. */}
+              <div className='absolute inset-0 bg-gradient-to-r from-[#002E8A]/90 via-[#002E8A]/70 to-[#002E8A]/25'></div>
+              <div className='absolute inset-0 bg-gradient-to-t from-[#002E8A]/45 via-transparent to-[#002E8A]/10'></div>
 
                {/* Content */}
                <div className='relative z-20 flex items-center h-full px-5 sm:px-8 lg:px-20'>
@@ -144,8 +145,8 @@ export const Hero = () => {
                      data-aos='fade-up'
                      className='flex items-center gap-2 mb-4'
                    >
-                     <div className='w-4 h-[2px] bg-[#2436ff]'></div>
-                     <span className='text-[#2436ff] uppercase tracking-wide font-semibold text-xs'>
+                     <div className='w-8 h-[2px] bg-[#D4A735]'></div>
+                     <span className='text-[#F1D98E] uppercase tracking-[0.2em] font-semibold text-xs'>
                        {slide.tag}
                      </span>
                    </div>
@@ -154,12 +155,12 @@ export const Hero = () => {
                    <h1
                      data-aos='fade-up'
                      data-aos-delay='100'
-                     className='text-white lg:text-[48px] md:text-[42px] sm:text-[36px] text-[28px] leading-tight font-extrabold mb-4'
+                     className='text-white lg:text-[58px] md:text-[48px] sm:text-[40px] text-[32px] leading-[1.08] font-bold mb-5 tracking-[-0.035em] max-w-2xl'
                    >
-                     <span className='block text-[#0e1630]'>
+                     <span className='block text-white'>
                        {slide.title}
                      </span>
-                     <span className='block text-[#2436ff]'>
+                     <span className='block text-[#E8C66B]'>
                        {slide.highlight}
                      </span>
                    </h1>
@@ -168,7 +169,7 @@ export const Hero = () => {
                    <p
                      data-aos='fade-up'
                      data-aos-delay='200'
-                     className='text-white text-sm sm:text-base leading-relaxed max-w-lg mb-6 font-medium'
+                     className='text-white/90 text-sm sm:text-base leading-7 max-w-lg mb-8 font-normal'
                    >
                     {slide.description}
                   </p>
@@ -177,7 +178,7 @@ export const Hero = () => {
                   <div data-aos='fade-up' data-aos-delay='300'>
                     <RouterLink
                       to='/about'
-                      className='inline-flex items-center gap-2 bg-[#2436ff] hover:bg-[#1727d8] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-xl'
+                      className='inline-flex items-center gap-2 bg-[#D4A735] hover:bg-[#E2BC55] text-[#17243B] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:-translate-y-0.5 shadow-[0_12px_30px_rgba(0,0,0,0.18)]'
                     >
                       <SlideIcon size={18} />
                       {slide.buttonText}
@@ -191,8 +192,8 @@ export const Hero = () => {
       </div>
 
       {/* Floating Service Cards */}
-      <div className='relative z-30 max-w-6xl mx-auto px-5 mt-10 sm:-mt-20 lg:-mt-16'>
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6'>
+      <div className='relative z-30 max-w-6xl mx-auto px-5 mt-7 sm:-mt-14 lg:-mt-16'>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5'>
 {services.map((service, index) => {
             const Icon = service.icon
 
@@ -200,11 +201,11 @@ export const Hero = () => {
                <RouterLink
                   key={index}
                   to={service.link}
-                  className='group rounded-md shadow-lg px-2 sm:px-3 py-4 sm:py-5 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-[#2436ff] hover:text-white cursor-pointer bg-white text-[#0e1630]'
+                  className='group rounded-2xl border border-slate-200/80 shadow-[0_12px_38px_rgba(22,45,82,0.08)] px-3 sm:px-4 py-5 sm:py-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-[#D4A735] hover:shadow-[0_20px_42px_rgba(0,46,138,0.14)] cursor-pointer bg-white text-[#1D2939]'
                 >
                   <div className='flex justify-center mb-2 sm:mb-3'>
-                    <div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#f4f6ff] group-hover:bg-white/10 transition-colors duration-300'>
-                      <Icon size={16} />
+                    <div className='w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-[#F5F7FA] text-[#002E8A] group-hover:bg-[#FFF8E8] group-hover:text-[#002E8A] transition-colors duration-300'>
+                      <Icon size={19} />
                     </div>
                   </div>
 
@@ -219,15 +220,15 @@ export const Hero = () => {
       </div>
 
       {/* Slide Indicators */}
-      <div className='flex justify-center gap-3 py-10'>
+      <div className='flex justify-center gap-3 pt-8 sm:pt-10'>
         {slidesData.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`transition-all duration-300 rounded-full ${
               currentSlide === index
-                ? 'w-10 h-3 bg-[#2436ff]'
-                : 'w-3 h-3 bg-gray-300'
+                ? 'w-9 h-2.5 bg-[#002E8A]'
+                : 'w-2.5 h-2.5 bg-slate-300'
             }`}
           ></button>
         ))}

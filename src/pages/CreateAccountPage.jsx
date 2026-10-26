@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import { FaUser, FaMapMarkerAlt, FaPhone, FaEnvelope, FaBriefcase, FaCamera, FaCheckCircle } from 'react-icons/fa';
 import { Header } from '../sections/Header';
 import { Footer } from '../sections/Footer';
+import './CreateAccountPage.css';
 
 export const CreateAccountPage = () => {
   const [formData, setFormData] = useState({
@@ -130,12 +131,12 @@ export const CreateAccountPage = () => {
   };
 
   return (
-    <>
+    <div className="create-account-page">
       <Header />
-      <div className='w-full min-h-screen flex flex-col items-center justify-center lg:px-[80px] px-[20px] lg:py-[120px] py-[80px] bg-gradient-to-br from-slate-50 via-white to-green-50'>
+      <main className='create-account-main w-full min-h-screen flex flex-col items-center justify-center lg:px-[80px] px-[20px] lg:py-[120px] py-[80px] bg-gradient-to-br from-slate-50 via-white to-green-50'>
         
         {/* Section Header */}
-        <div className='text-center max-w-3xl mx-auto mb-12' data-aos="fade-up">
+        <div className='account-intro text-center max-w-3xl mx-auto mb-12' data-aos="fade-up">
           <div className='inline-flex items-center gap-2 px-5 py-2 bg-themegreen/10 border border-themegreen/20 rounded-full mb-6'>
             <FaUser className='text-themegreen' />
             <span className='text-themegreen text-sm font-semibold tracking-wider uppercase'>
@@ -154,7 +155,7 @@ export const CreateAccountPage = () => {
 
         {/* Form Container */}
         <div className='w-full max-w-4xl mx-auto' data-aos="fade-up" data-aos-delay="200">
-          <form onSubmit={handleSubmit} className='bg-white rounded-2xl shadow-xl p-8 lg:p-12'>
+          <form onSubmit={handleSubmit} className='account-form bg-white rounded-2xl shadow-xl p-8 lg:p-12'>
             
             {/* Personal Information Section */}
             <div className='mb-10'>
@@ -432,7 +433,7 @@ export const CreateAccountPage = () => {
         </div>
 
         {/* Info Box */}
-        <div className='w-full max-w-4xl mx-auto mt-8' data-aos="fade-up" data-aos-delay="400">
+        <div className='account-next-steps w-full max-w-4xl mx-auto mt-8' data-aos="fade-up" data-aos-delay="400">
           <div className='bg-blue-50 border border-blue-200 rounded-lg p-6'>
             <h4 className='text-blue-900 font-bold mb-2 flex items-center gap-2'>
               <FaCheckCircle className='text-blue-600' />
@@ -446,8 +447,8 @@ export const CreateAccountPage = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };

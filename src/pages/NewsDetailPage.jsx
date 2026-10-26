@@ -6,6 +6,7 @@ import { FaArrowLeft, FaCalendarAlt, FaTag, FaUser } from 'react-icons/fa'
 import { news } from '../export'
 import { Header } from '../sections/Header'
 import { Footer } from '../sections/Footer'
+import './NewsDetailPage.css'
 
 export const NewsDetailPage = () => {
   const { newsId } = useParams()
@@ -24,13 +25,13 @@ export const NewsDetailPage = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
+      <div className="news-detail-page min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="news-detail-empty text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Article Not Found</h1>
           <p className="text-gray-600 mb-8">The article you're looking for doesn't exist.</p>
           <Link
             to="/latest-news"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            className="news-detail-back-button bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             Back to Latest News
           </Link>
@@ -40,10 +41,10 @@ export const NewsDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="news-detail-page min-h-screen bg-slate-50">
       <Header />
 
-      <section className="relative py-20 lg:py-28 overflow-hidden">
+      <section className="news-detail-hero relative py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -54,7 +55,7 @@ export const NewsDetailPage = () => {
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="news-detail-hero__content relative max-w-7xl mx-auto px-6 lg:px-8">
           <div data-aos="fade-up">
             <button
               onClick={() => navigate(-1)}
@@ -87,9 +88,9 @@ export const NewsDetailPage = () => {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24">
+      <section className="news-detail-body py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100" data-aos="fade-up">
+          <article className="news-detail-card bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100" data-aos="fade-up">
             <img
               src={article.img}
               alt={article.title}
@@ -121,7 +122,7 @@ export const NewsDetailPage = () => {
                 </Link>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 

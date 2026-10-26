@@ -1,234 +1,245 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Clock3,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+  ShieldCheck,
+  Users,
+} from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 import { Header } from '../sections/Header'
 import { Footer } from '../sections/Footer'
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaPaperPlane } from 'react-icons/fa'
+import { useHeroParallax } from '../hooks/useHeroParallax'
+import { usePointerAtmosphere } from '../hooks/usePointerAtmosphere'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+import communityImage from '../assets/assets3/community.png'
+import './ContactPage.css'
+
+const contactCards = [
+  {
+    title: 'Customer Care',
+    icon: Phone,
+    lines: [
+      { label: '+237 675 95 27 41', href: 'tel:+237675952741' },
+      { label: 'contact@mmoccul.com', href: 'mailto:contact@mmoccul.com' },
+      { label: 'Monday – Friday | 8:00am – 5:00pm' },
+    ],
+  },
+  {
+    title: 'Head Office (Damas)',
+    icon: MapPin,
+    lines: [
+      { label: 'Damas / Rond Point Damas, Yaoundé' },
+      { label: '673 86 23 69', href: 'tel:+237673862369' },
+    ],
+  },
+  {
+    title: 'General Inquiries',
+    icon: Mail,
+    lines: [
+      { label: 'contact@mmoccul.com', href: 'mailto:contact@mmoccul.com' },
+      { label: 'WhatsApp support is available via the floating button' },
+    ],
+  },
+]
+
+const supportOptions = [
+  { title: 'Call Customer Care', detail: '+237 675 95 27 41', href: 'tel:+237675952741', icon: Phone },
+  { title: 'WhatsApp Us', detail: 'Chat with our support team', href: 'https://wa.me/237680485488', icon: FaWhatsapp, external: true },
+  { title: 'Find a Branch', detail: 'Explore our 13 locations', href: '/branches', icon: MapPin },
+  { title: 'Open an Account', detail: 'Start your membership', href: '/create-account', icon: Users },
+]
+
+const subjectOptions = ['General Inquiry', 'Account Support', 'Loan Inquiry', 'Complaint', 'Partnership', 'Other']
 
 export const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+  const pageRef = useRef(null)
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
+  const [formStatus, setFormStatus] = useState('')
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+  useHeroParallax(pageRef)
+  usePointerAtmosphere(pageRef)
+  useRevealOnScroll(pageRef, '.contact-reveal')
+
+  const handleChange = (event) => {
+    setFormData((current) => ({ ...current, [event.target.name]: event.target.value }))
+    setFormStatus('')
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message. We will get back to you soon!')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const emailSubject = encodeURIComponent(formData.subject || 'Contact message')
+    const emailBody = encodeURIComponent(
+      `Full Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\n\n${formData.message}`
+    )
+    window.location.href = `mailto:contact@mmoccul.com?subject=${emailSubject}&body=${emailBody}`
+    setFormStatus('Your message has been prepared in your email app. Send it there to complete delivery.')
   }
+
+  const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Damas%20%2F%20Rond%20Point%20Damas%20neighbourhood%2C%20Yaound%C3%A9%2C%20Cameroon'
+  const mapsEmbedUrl = 'https://maps.google.com/maps?q=Damas%20%2F%20Rond%20Point%20Damas%20neighbourhood%2C%20Yaound%C3%A9%2C%20Cameroon&t=&z=14&ie=UTF8&iwloc=&output=embed'
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="contact-page" ref={pageRef}>
       <Header />
-
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920')] bg-cover bg-center opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-slate-700/50 bg-white/5 px-6 py-3 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
-            <span className="text-xs font-medium uppercase tracking-wider text-slate-400">Get in Touch</span>
-          </div>
-          <h1 className="font-serif text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-cyan-400 to-sky-400 bg-clip-text text-transparent">Contact Us</span>
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-slate-300 leading-relaxed">
-            We're here to help with any questions about our services, account options, or how we can support your financial goals.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact Info & Form */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
-            <div>
-              <h2 className="font-serif text-3xl lg:text-4xl font-bold text-slate-900 mb-8">Get in Touch</h2>
-              
-              <div className="space-y-6 mb-12">
-                <div className="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-all duration-300">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-100 text-cyan-600">
-                    <FaMapMarkerAlt className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Visit Us</h3>
-                    <p className="text-slate-600">Depot de Bois Damas, Yaoundé, Cameroon</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-all duration-300">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-100 text-cyan-600">
-                    <FaPhoneAlt className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Call Us</h3>
-                    <a href="tel:+237670020630" className="text-cyan-600 hover:text-cyan-700 transition-colors">+237 670 020 630</a>
-                    <p className="text-slate-600 text-sm mt-1">Mon-Fri: 8am - 4:30pm, Sat: 8am - 4:30pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-all duration-300">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-100 text-cyan-600">
-                    <FaEnvelope className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">Email Us</h3>
-                    <a href="mailto:info@mmoccul.com" className="text-cyan-600 hover:text-cyan-700 transition-colors">info@mmoccul.com</a>
-                    <p className="text-slate-600 text-sm mt-1">We respond within 24 hours</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100 hover:border-cyan-200 hover:bg-cyan-50/50 transition-all duration-300">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-                    <FaWhatsapp className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">WhatsApp</h3>
-                    <a href="https://wa.me/237680485488" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">+237 680 485 488</a>
-                    <p className="text-slate-600 text-sm mt-1">Quick responses, 24/7</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-cyan-50 to-sky-50 rounded-2xl p-6 border border-cyan-100">
-                <h3 className="font-semibold text-slate-900 mb-2">Visit Our Headquarters</h3>
-                <p className="text-slate-600 text-sm mb-4">Depot de Bois Damas, Yaoundé</p>
-                <a 
-                  href="https://www.google.com/maps/place/Yaounde,+Cameroon" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-medium"
-                >
-                  <FaMapMarkerAlt className="w-4 h-4" />
-                  View on Google Maps
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div>
-              <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 lg:p-10">
-                <h3 className="font-serif text-2xl font-bold text-slate-900 mb-2">Send us a Message</h3>
-                <p className="text-slate-600 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200"
-                      placeholder="How can we help you?"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 resize-none"
-                      placeholder="Tell us more about your inquiry..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <FaPaperPlane className="w-5 h-5" />
-                    Send Message
-                  </button>
-                </form>
-              </div>
+      <main>
+        <section className="contact-hero" aria-labelledby="contact-hero-title">
+          <div className="contact-hero__image" style={{ backgroundImage: `url(${communityImage})` }} aria-hidden="true" />
+          <div className="contact-hero__veil" aria-hidden="true" />
+          <div className="contact-shell contact-hero__content">
+            <span className="contact-kicker contact-kicker--light"><i /> Contact Us</span>
+            <h1 id="contact-hero-title">We’re Here<br /><em>to Help</em></h1>
+            <p>Reach out to MMOCCUL for inquiries, support, account assistance, or partnership opportunities. Our team is ready to serve you.</p>
+            <div className="contact-hero__trust">
+              <span><ShieldCheck size={15} /> COBAC Licensed</span><i />
+              <span><Users size={15} /> Member-Owned</span><i />
+              <span><MapPin size={15} /> Nationwide Support</span>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="contact-hero__bottom" aria-hidden="true" />
+        </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 lg:py-24 bg-slate-50 border-t border-slate-200/50">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Quick Answers</h2>
-            <p className="text-slate-600">Common questions about our services and locations</p>
-          </div>
-
-          <div className="space-y-6">
-            {[  
-              {
-                question: 'What are your operating hours?',
-                answer: 'Most branches operate Monday to Friday from 8:00 AM to 4:30 PM, and Saturday from 8:00 AM to 4:30 PM. Head office in Damas stays open until 6 PM on weekdays. We also offer 24/7 access through our digital banking platform and ATMs.'
-              },
-              {
-                question: 'Which services can I access at any branch?',
-                answer: 'Personal banking, savings accounts, and basic inquiries are available at all locations. Specialty services like international transfers, business banking, and agricultural loans may be limited to specific branches. Check our website for each branch\'s offered services.'
-              },
-              {
-                question: 'Do I need an appointment for account opening?',
-                answer: 'No appointment is necessary for most account types. You can visit any branch during operating hours with your required documents (ID, proof of address, etc.). For corporate accounts or complex needs, we recommend calling ahead.'
-              }
-            ].map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 border border-slate-100 hover:border-cyan-200 hover:shadow-sm transition-all">
-                <button className="w-full text-left flex items-start gap-4">
-                  <svg className="w-6 h-6 text-cyan-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 text-lg">{faq.question}</h3>
-                    <p className="text-slate-600 mt-2 text-sm leading-relaxed">{faq.answer}</p>
+        <section className="contact-information contact-section">
+          <div className="contact-shell">
+            <div className="contact-heading contact-reveal">
+              <span className="contact-kicker">Get in touch</span>
+              <h2>We’re only a message away.</h2>
+              <p>Choose the best way to reach our team and we’ll be glad to help.</p>
+            </div>
+            <div className="contact-info-grid">
+              {contactCards.map(({ title, icon: Icon, lines }, index) => (
+                <article className="contact-info-card contact-reveal" key={title} style={{ '--contact-delay': `${index * 70}ms` }}>
+                  <span className="contact-info-card__icon"><Icon size={21} /></span>
+                  <h3>{title}</h3>
+                  <div className="contact-info-card__lines">
+                    {lines.map(({ label, href }) => href
+                      ? <a href={href} key={label}>{label}</a>
+                      : <p key={label}>{label}</p>)}
                   </div>
-                </button>
-              </div>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        <section className="contact-form-section contact-section">
+          <div className="contact-shell contact-form-layout">
+            <div className="contact-form-intro contact-reveal">
+              <span className="contact-kicker">Send us a message</span>
+              <h2>How can we help you today?</h2>
+              <p>Share a few details and your email app will prepare a message for our customer care team.</p>
+              <div className="contact-form-intro__note"><Clock3 size={18} /> Customer care hours: Monday – Friday, 8:00am – 5:00pm</div>
+              <a className="contact-inline-link" href="mailto:contact@mmoccul.com">Email us directly <ArrowUpRight size={15} /></a>
+            </div>
+            <form className="contact-form contact-reveal" onSubmit={handleSubmit} style={{ '--contact-delay': '100ms' }}>
+              <h3>Send Us a Message</h3>
+              <div className="contact-form__grid">
+                <label>
+                  <span>Full Name</span>
+                  <input autoComplete="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Your full name" />
+                </label>
+                <label>
+                  <span>Email Address</span>
+                  <input autoComplete="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" />
+                </label>
+                <label>
+                  <span>Phone Number</span>
+                  <input autoComplete="tel" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+237 ..." />
+                </label>
+                <label>
+                  <span>Subject</span>
+                  <select name="subject" value={formData.subject} onChange={handleChange} required>
+                    <option value="" disabled>Select a subject</option>
+                    {subjectOptions.map((subject) => <option key={subject} value={subject}>{subject}</option>)}
+                  </select>
+                </label>
+                <label className="contact-form__full">
+                  <span>Message</span>
+                  <textarea name="message" value={formData.message} onChange={handleChange} required rows="5" placeholder="Tell us how we can help..." />
+                </label>
+              </div>
+              {formStatus && <p className="contact-form__status" role="status">{formStatus}</p>}
+              <button className="contact-button contact-button--gold contact-form__submit" data-pointer-effect="magnetic" type="submit">Prepare Message <Send size={16} /></button>
+            </form>
+          </div>
+        </section>
+
+        <section className="contact-quick contact-section">
+          <div className="contact-shell">
+            <div className="contact-heading contact-reveal">
+              <span className="contact-kicker">Quick support</span>
+              <h2>Get help your way.</h2>
+            </div>
+            <div className="contact-quick-grid">
+              {supportOptions.map(({ title, detail, href, icon: Icon, external }, index) => {
+                const content = (
+                  <>
+                    <span className="contact-quick-card__icon"><Icon size={20} /></span>
+                    <span className="contact-quick-card__copy"><strong>{title}</strong><small>{detail}</small></span>
+                    <ArrowUpRight className="contact-quick-card__arrow" size={17} />
+                  </>
+                )
+                const className = 'contact-quick-card contact-reveal'
+                return external
+                  ? <a className={className} style={{ '--contact-delay': `${index * 55}ms` }} href={href} target="_blank" rel="noopener noreferrer" key={title}>{content}</a>
+                  : <Link className={className} style={{ '--contact-delay': `${index * 55}ms` }} to={href} key={title}>{content}</Link>
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-map-section contact-section">
+          <div className="contact-shell contact-map-layout">
+            <div className="contact-map-copy contact-reveal">
+              <span className="contact-kicker">Visit our head office</span>
+              <h2>Come see us in Damas.</h2>
+              <p>Damas / Rond Point Damas neighbourhood, Yaoundé</p>
+              <a className="contact-button contact-button--blue" href={mapsUrl} target="_blank" rel="noopener noreferrer">Get Directions <ArrowUpRight size={15} /></a>
+            </div>
+            <div className="contact-map contact-reveal" style={{ '--contact-delay': '100ms' }}>
+              <iframe title="Map showing MMOCCUL Head Office in Damas, Yaoundé" src={mapsEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-channels contact-section">
+          <div className="contact-shell contact-channels__inner contact-reveal">
+            <div>
+              <span className="contact-kicker contact-kicker--light">Alternative contact channels</span>
+              <h2>Connect with MMOCCUL.</h2>
+            </div>
+            <div className="contact-channels__list">
+              <a href="tel:+237675952741"><Phone size={17} /><span><small>Phone</small>+237 675 95 27 41</span></a>
+              <a href="mailto:contact@mmoccul.com"><Mail size={17} /><span><small>Email</small>contact@mmoccul.com</span></a>
+              <a href="https://www.mmoccul.com/" target="_blank" rel="noopener noreferrer"><ArrowUpRight size={17} /><span><small>Website</small>www.mmoccul.com</span></a>
+              <a href="https://wa.me/237680485488" target="_blank" rel="noopener noreferrer"><FaWhatsapp size={18} /><span><small>WhatsApp</small>Chat with our support team</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-cta">
+          <div className="contact-cta__pattern" aria-hidden="true" />
+          <div className="contact-shell contact-cta__inner contact-reveal">
+            <span className="contact-kicker contact-kicker--light"><i /> Your local cooperative</span>
+            <h2>Prefer to Visit Us?</h2>
+            <p>Find the nearest MMOCCUL branch and speak with our team in person.</p>
+            <div className="contact-cta__actions">
+              <Link className="contact-button contact-button--gold" data-pointer-effect="magnetic" to="/branches">Find a Branch <MapPin size={15} /></Link>
+              <Link className="contact-button contact-button--outline" to="/create-account">Become a Member <ArrowRight size={15} /></Link>
+              <a className="contact-cta__call" href="tel:+237675952741">Call Us Now <Phone size={15} /></a>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
+      <a className="contact-whatsapp" href="https://wa.me/237680485488" target="_blank" rel="noopener noreferrer" aria-label="Chat with MMOCCUL on WhatsApp">
+        <FaWhatsapp size={23} />
+      </a>
     </div>
   )
 }

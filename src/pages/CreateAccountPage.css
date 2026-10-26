@@ -1,0 +1,171 @@
+.create-account-page {
+  --account-blue: #002e8a;
+  --account-gold: #d4a735;
+  --account-ink: #1d2939;
+  --account-muted: #667085;
+  color: var(--account-ink);
+  font-family: 'DM Sans', 'Poppins', sans-serif;
+}
+
+.create-account-page *,
+.create-account-page *::before,
+.create-account-page *::after {
+  box-sizing: border-box;
+}
+
+.create-account-page .create-account-main {
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 76px 24px 88px;
+  background:
+    radial-gradient(ellipse at 12% 10%, rgba(212, 167, 53, .09), transparent 27rem),
+    linear-gradient(180deg, #f5f7fa 0%, #fff 50%, #f5f7fa 100%);
+}
+
+.create-account-page .account-intro {
+  width: min(100%, 760px);
+  margin: 0 auto 42px;
+}
+
+.create-account-page .account-intro > div:first-child {
+  border-color: rgba(212, 167, 53, .34);
+  background: rgba(212, 167, 53, .12);
+}
+
+.create-account-page .text-themegreen,
+.create-account-page .account-intro > div:first-child span {
+  color: var(--account-blue);
+}
+
+.create-account-page .account-intro h2 {
+  color: var(--account-blue);
+  font-size: clamp(38px, 5.5vw, 58px);
+  letter-spacing: -.055em;
+  line-height: 1.06;
+}
+
+.create-account-page .account-intro h2 span {
+  background-image: linear-gradient(105deg, var(--account-blue), #2864ad);
+}
+
+.create-account-page .account-intro > p {
+  max-width: 650px;
+  margin-inline: auto;
+  color: var(--account-muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.create-account-page .account-form {
+  padding: clamp(24px, 5vw, 52px);
+  border: 1px solid #e5eaf1;
+  border-radius: 22px;
+  box-shadow: 0 18px 55px rgba(17, 37, 74, .09);
+}
+
+.create-account-page .account-form > div:not(:last-child) {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.create-account-page .account-form h3 {
+  color: var(--account-blue);
+  letter-spacing: -.025em;
+}
+
+.create-account-page .account-form h3 > div {
+  color: var(--account-blue);
+  background: rgba(0, 46, 138, .08);
+}
+
+.create-account-page .account-form input:not([type='checkbox']):not([type='file']),
+.create-account-page .account-form select {
+  min-height: 50px;
+  border-color: #d8e0eb;
+  border-radius: 10px;
+  color: var(--account-ink);
+  background-color: #fff;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.create-account-page .account-form input:focus,
+.create-account-page .account-form select:focus {
+  border-color: var(--account-blue);
+  outline: 3px solid rgba(0, 46, 138, .12);
+  outline-offset: 1px;
+}
+
+.create-account-page .account-form label:not([for='acceptTerms']) {
+  color: #344054;
+}
+
+.create-account-page .account-form [class*='border-dashed'] {
+  border-radius: 14px;
+  background: #f8fafc;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.create-account-page .account-form [class*='border-dashed']:hover {
+  border-color: var(--account-blue);
+  background: #f2f6fc;
+}
+
+.create-account-page .account-form button[type='submit'] {
+  min-height: 52px;
+  border-radius: 999px;
+  padding-inline: 30px;
+  color: #1d2939;
+  background: var(--account-gold);
+  box-shadow: 0 9px 22px rgba(0, 46, 138, .14);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.create-account-page .account-form button[type='submit']:hover {
+  transform: translateY(-2px);
+  background: #e4bd54;
+  box-shadow: 0 12px 27px rgba(0, 46, 138, .2);
+}
+
+.create-account-page .account-next-steps > div {
+  border: 1px solid #e5eaf1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 32px rgba(17, 37, 74, .06);
+}
+
+.create-account-page .account-next-steps h4,
+.create-account-page .account-next-steps ul {
+  color: var(--account-blue);
+}
+
+.create-account-page .account-next-steps h4 svg {
+  color: var(--account-gold);
+}
+
+@media (max-width: 640px) {
+  .create-account-page .create-account-main {
+    padding: 52px 16px 64px;
+  }
+
+  .create-account-page .account-intro {
+    margin-bottom: 30px;
+  }
+
+  .create-account-page .account-form {
+    padding: 24px 18px;
+  }
+
+  .create-account-page .account-form h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .create-account-page *,
+  .create-account-page *::before,
+  .create-account-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

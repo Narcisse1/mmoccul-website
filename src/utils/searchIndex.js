@@ -1,6 +1,6 @@
 // src/utils/searchIndex.js
 import { services, news } from '../export'
-import { branches } from '../pages/BranchesPage'
+import { branches } from '../data/branches'
 
 // Builds a flat, searchable list from your existing data sources.
 // If your folder structure differs, adjust the import paths above —
@@ -21,7 +21,7 @@ export const buildSearchIndex = () => {
     id: b.id,
     title: b.name,
     description: b.address,
-    route: '/branches',
+    route: `/branches/${b.slug}`,
   }))
 
   const flatNews = news.map((n, i) => ({

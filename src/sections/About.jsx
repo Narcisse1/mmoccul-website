@@ -66,7 +66,7 @@ export const About = () => {
         <div className='text-center mb-6'>
           <div 
             data-aos="fade-up" 
-            className='inline-block px-5 py-2.5 bg-[#2436ff] rounded-full mb-6 transition-all duration-300 hover:bg-[#1b2be0]'
+            className='inline-block px-5 py-2.5 bg-[#002E8A] rounded-full mb-5 transition-all duration-300 hover:bg-[#0A3C9D]'
           >
             <span className='text-white text-[10px] sm:text-xs font-semibold tracking-[0.35em] uppercase'>
               {t('ourIdentity')}
@@ -79,7 +79,7 @@ export const About = () => {
             className='lg:text-5xl text-3xl font-bold leading-tight font-poppins mb-6 text-slate-900 max-w-4xl mx-auto'
           >
             {typedText}
-            <span className='animate-pulse text-[#2436ff]'>|</span>
+            <span className='animate-pulse text-[#D4A735]'>|</span>
           </h1>
 
 
@@ -98,7 +98,7 @@ export const About = () => {
                 className='w-full h-[420px] object-cover transform hover:scale-105 transition-transform duration-500'
               />
 
-              <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent'></div>
+              <div className='absolute inset-0 bg-gradient-to-t from-[#002E8A]/55 via-[#002E8A]/10 to-transparent'></div>
 
               {/* Floating Stats */}
               <div className='absolute bottom-6 left-6 right-6'>
@@ -107,21 +107,21 @@ export const About = () => {
                   <div className='grid grid-cols-3 gap-4'>
 
                     <div className='text-center'>
-                       <h3 className='text-[#2436ff] text-2xl font-bold'>16K+</h3>
+                       <h3 className='text-[#002E8A] text-2xl font-bold'>16K+</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
                         {t('members')}
                       </p>
                     </div>
 
                     <div className='text-center border-x border-slate-200'>
-                      <h3 className='text-[#2436ff] text-2xl font-bold'>50+</h3>
+                      <h3 className='text-[#002E8A] text-2xl font-bold'>50+</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
                         {t('partners')}
                       </p>
                     </div>
 
                     <div className='text-center'>
-                      <h3 className='text-[#2436ff] text-2xl font-bold'>99%</h3>
+                      <h3 className='text-[#002E8A] text-2xl font-bold'>99%</h3>
                       <p className='text-slate-500 text-xs uppercase tracking-wide'>
                         {t('satisfaction')}
                       </p>
@@ -140,7 +140,7 @@ export const About = () => {
           {/* Text Section */}
           <div data-aos="fade-left" className='space-y-5'>
             
-            <h2 className='text-[#0e1630] text-4xl font-bold font-poppins leading-tight'>
+            <h2 className='text-[#002E8A] text-4xl font-bold font-poppins leading-tight'>
               {t('whyChooseMmoccul')}
             </h2>
 
@@ -151,7 +151,7 @@ export const About = () => {
             <RouterLink 
               to="/about"
               data-aos="fade-up" 
-              className='inline-block bg-[#2436ff] hover:bg-[#1b2be0] py-4 px-8 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105'
+              className='inline-block bg-[#002E8A] hover:bg-[#0A3C9D] py-4 px-8 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5'
             >
               {t('learnMore')}
             </RouterLink>
@@ -174,7 +174,7 @@ export const About = () => {
                   className='w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700'
                 />
 
-                <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent'></div>
+                <div className='absolute inset-0 bg-gradient-to-t from-[#002E8A]/55 via-[#002E8A]/10 to-transparent'></div>
               </div>
 
               <div className='p-6'>
@@ -197,7 +197,7 @@ export const About = () => {
             <div className='grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-200'>
               
               <div className='p-6 text-center hover:bg-slate-50 transition-all duration-300'>
-                <h3 className='text-3xl font-bold text-[#2436ff] mb-2'>
+                <h3 className='text-3xl font-bold text-[#002E8A] mb-2'>
                   16K+
                 </h3>
 
@@ -207,7 +207,7 @@ export const About = () => {
               </div>
 
               <div className='p-6 text-center hover:bg-slate-50 transition-all duration-300'>
-                <h3 className='text-3xl font-bold text-[#2436ff] mb-2'>
+                <h3 className='text-3xl font-bold text-[#002E8A] mb-2'>
                   98%
                 </h3>
 
@@ -217,7 +217,7 @@ export const About = () => {
               </div>
 
               <div className='p-6 text-center hover:bg-slate-50 transition-all duration-300'>
-                <h3 className='text-3xl font-bold text-[#2436ff] mb-2'>
+                <h3 className='text-3xl font-bold text-[#002E8A] mb-2'>
                   50+
                 </h3>
 
@@ -227,7 +227,7 @@ export const About = () => {
               </div>
 
               <div className='p-6 text-center hover:bg-slate-50 transition-all duration-300'>
-                <h3 className='text-3xl font-bold text-[#2436ff] mb-2'>
+                <h3 className='text-3xl font-bold text-[#002E8A] mb-2'>
                   24/7
                 </h3>
 

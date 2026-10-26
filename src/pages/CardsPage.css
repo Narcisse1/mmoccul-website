@@ -1,0 +1,226 @@
+.cards-page {
+  --cards-blue: #002e8a;
+  --cards-gold: #d4a735;
+  --cards-ink: #1d2939;
+  --cards-muted: #667085;
+  color: var(--cards-ink);
+  font-family: 'DM Sans', 'Poppins', sans-serif;
+}
+
+.cards-page *,
+.cards-page *::before,
+.cards-page *::after {
+  box-sizing: border-box;
+}
+
+.cards-page a {
+  text-decoration: none;
+}
+
+.cards-page .cards-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0 70px;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(212, 167, 53, .22), transparent 24rem),
+    linear-gradient(118deg, #00235f, var(--cards-blue) 68%, #174c9f);
+}
+
+.cards-page .cards-hero::after {
+  position: absolute;
+  right: max(6%, calc((100vw - 1180px) / 2));
+  bottom: -50px;
+  width: 210px;
+  height: 210px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(255, 255, 255, .035), 0 0 0 58px rgba(255, 255, 255, .025);
+  content: '';
+  pointer-events: none;
+}
+
+.cards-page .cards-hero h1 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: clamp(38px, 5.5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: 1.08;
+}
+
+.cards-page .cards-hero p {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, .82);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.cards-page .cards-main {
+  padding-block: 64px 88px;
+  background: linear-gradient(180deg, #f5f7fa, #fff 45%);
+}
+
+.cards-page .cards-visual {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e5eaf1;
+  border-radius: 22px;
+  background: var(--cards-blue);
+  box-shadow: 0 18px 45px rgba(17, 37, 74, .12);
+}
+
+.cards-page .cards-visual img {
+  display: block;
+  height: clamp(220px, 31vw, 380px);
+  object-position: center 46%;
+  transition: transform 500ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.cards-page .cards-visual:hover img {
+  transform: scale(1.025);
+}
+
+.cards-page .cards-section {
+  margin-bottom: 76px;
+}
+
+.cards-page .cards-section > h2 {
+  margin-bottom: 28px;
+  color: var(--cards-blue);
+  font-size: clamp(28px, 3.8vw, 40px);
+  font-weight: 700;
+  letter-spacing: -.045em;
+}
+
+.cards-page .cards-product {
+  display: flex;
+  flex-direction: column;
+  border-color: #e5eaf1;
+  border-radius: 18px;
+  box-shadow: 0 8px 26px rgba(17, 37, 74, .055);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.cards-page .cards-product:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 46, 138, .2);
+  box-shadow: 0 18px 38px rgba(17, 37, 74, .12);
+}
+
+.cards-page .cards-product > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.cards-page .cards-product h3 {
+  color: var(--cards-blue);
+  font-size: 18px;
+}
+
+.cards-page .cards-product p,
+.cards-page .cards-product .space-y-2 {
+  color: var(--cards-muted);
+  line-height: 1.7;
+}
+
+.cards-page .cards-product a {
+  align-self: flex-start;
+  margin-top: auto;
+  color: #1d2939;
+  background: var(--cards-gold);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.cards-page .cards-product a:hover {
+  transform: translateY(-2px);
+  color: #1d2939;
+  background: #e4bd54;
+}
+
+.cards-page .cards-benefits .grid > div {
+  padding: 24px;
+  border: 1px solid #e5eaf1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(17, 37, 74, .05);
+}
+
+.cards-page .cards-benefits .grid > div > div {
+  padding: 16px;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.cards-page .cards-benefits h3 {
+  color: var(--cards-blue);
+}
+
+.cards-page .cards-cta {
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid #e5eaf1;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 90% 12%, rgba(212, 167, 53, .16), transparent 18rem),
+    #f5f7fa;
+}
+
+.cards-page .cards-cta h2 {
+  color: var(--cards-blue);
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -.04em;
+}
+
+.cards-page .cards-cta > p {
+  color: var(--cards-muted);
+  line-height: 1.8;
+}
+
+.cards-page .cards-cta a {
+  min-height: 46px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.cards-page .cards-cta a:first-child {
+  border-color: transparent;
+  color: #1d2939;
+  background: var(--cards-gold);
+}
+
+.cards-page .cards-cta a:last-child {
+  border-color: var(--cards-blue);
+  color: var(--cards-blue);
+}
+
+@media (max-width: 640px) {
+  .cards-page .cards-hero {
+    padding: 48px 0 54px;
+  }
+
+  .cards-page .cards-main {
+    padding-block: 38px 60px;
+  }
+
+  .cards-page .cards-section {
+    margin-bottom: 54px;
+  }
+
+  .cards-page .cards-benefits .grid > div {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-page *,
+  .cards-page *::before,
+  .cards-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

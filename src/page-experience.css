@@ -1,0 +1,338 @@
+.site-page-system {
+  --site-blue: #002e8a;
+  --site-gold: #d4a735;
+  --site-ink: #1d212b;
+  --site-muted: #667085;
+  --site-pale: #f5f7fa;
+  --site-border: #e5eaf1;
+}
+
+.site-page-system :is(
+  .services-card,
+  .branch-card,
+  .about-principle-card,
+  .about-why-card,
+  .branch-detail-information__card,
+  .branch-detail-service,
+  .branch-detail-why-card,
+  .branch-detail-related-card,
+  .service-detail-related-card,
+  .contact-info-card,
+  .contact-quick-card,
+  .news-card,
+  .cards-product,
+  .news-detail-card,
+  .account-next-steps > div
+) {
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(17, 37, 74, .055);
+  transition: border-color 240ms ease, box-shadow 260ms ease, transform 260ms cubic-bezier(.2, .72, .2, 1), background-color 220ms ease;
+}
+
+.site-page-system :is(
+  .services-card:hover,
+  .branch-card:hover,
+  .about-principle-card:hover,
+  .about-why-card:hover,
+  .branch-detail-service:hover,
+  .branch-detail-why-card:hover,
+  .branch-detail-related-card:hover,
+  .service-detail-related-card:hover,
+  .contact-info-card:hover,
+  .contact-quick-card:hover,
+  .news-card:hover,
+  .cards-product:hover
+) {
+  border-color: rgba(212, 167, 53, .7);
+  box-shadow: 0 18px 40px rgba(17, 37, 74, .11);
+  transform: translateY(-6px);
+}
+
+.site-page-system :is(
+  .services-card h3,
+  .branch-card h3,
+  .about-principle-card h3,
+  .about-why-card h3,
+  .branch-detail-service strong,
+  .branch-detail-why-card h3,
+  .branch-detail-related-card h3,
+  .service-detail-related-card h3,
+  .contact-info-card h3,
+  .contact-quick-card__copy strong,
+  .news-card h3,
+  .cards-product h3
+) {
+  color: var(--site-blue);
+}
+
+.site-page-system :is(
+  .services-card__icon,
+  .branch-card__icon,
+  .about-principle-card__icon,
+  .about-why-card__icon,
+  .branch-detail-service > span,
+  .branch-detail-why-card__icon,
+  .contact-info-card__icon,
+  .contact-quick-card__icon,
+  .cards-product__icon
+) {
+  border-radius: 15px;
+  color: var(--site-blue);
+  background: #edf3fb;
+}
+
+.site-page-system :is(
+  .services-button--gold,
+  .branch-detail-button--gold,
+  .contact-button--gold,
+  .news-button--gold
+) {
+  color: var(--site-ink);
+  background: var(--site-gold);
+  transition: transform 200ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.site-page-system :is(
+  .services-button--gold:hover,
+  .branch-detail-button--gold:hover,
+  .contact-button--gold:hover,
+  .news-button--gold:hover
+) {
+  color: var(--site-ink);
+  background: #e4bd54;
+  box-shadow: 0 10px 24px rgba(0, 25, 77, .16);
+  transform: translateY(-2px);
+}
+
+.site-page-system :is(
+  .services-advantage,
+  .about-principles,
+  .contact-map-section,
+  .branch-detail-directions,
+  .service-detail-features,
+  .news-posts
+) {
+  background-color: var(--site-pale);
+}
+
+.site-page-system :is(
+  .services-card__image,
+  .news-card__image,
+  .service-detail-related-card__image,
+  .branch-detail-related-card__image
+) {
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.site-page-system :is(
+  .services-card__image > img,
+  .news-card__image img,
+  .service-detail-related-card__image img,
+  .branch-detail-related-card__image img
+) {
+  transition: transform 450ms cubic-bezier(.2, .72, .2, 1);
+}
+
+.site-page-system :is(
+  .services-card:hover .services-card__image > img,
+  .news-card:hover .news-card__image img,
+  .service-detail-related-card:hover .service-detail-related-card__image img,
+  .branch-detail-related-card:hover .branch-detail-related-card__image img
+) {
+  transform: scale(1.035);
+}
+
+.site-page-system :is(
+  .services-card a:focus-visible,
+  .branch-card a:focus-visible,
+  .about-page a:focus-visible,
+  .contact-page a:focus-visible,
+  .news-card a:focus-visible,
+  .cards-page a:focus-visible,
+  .branch-detail-page a:focus-visible,
+  .service-detail-page a:focus-visible
+) {
+  outline: 2px solid var(--site-gold);
+  outline-offset: 3px;
+}
+
+.site-page-system .cards-page .cards-product a {
+  border-radius: 999px;
+  color: var(--site-ink);
+  background: var(--site-gold);
+}
+
+.site-page-system .cards-page .cards-product a:hover {
+  color: var(--site-ink);
+  background: #e4bd54;
+}
+
+.site-page-system .cards-page .cards-product__icon,
+.site-page-system .cards-page .cards-benefit__icon {
+  border: 1px solid rgba(0, 46, 138, .1);
+  color: var(--site-blue);
+  background: #edf3fb;
+}
+
+.site-page-system .cards-page .cards-product__icon-symbol,
+.site-page-system .cards-page .cards-benefit__icon-symbol {
+  color: var(--site-blue);
+}
+
+.site-page-system .cards-page .cards-action-primary,
+.site-page-system .cards-page .cards-action-secondary {
+  display: inline-flex;
+  min-height: 45px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 200ms ease, color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.site-page-system .cards-page .cards-action-primary {
+  color: var(--site-ink);
+  background: var(--site-gold);
+}
+
+.site-page-system .cards-page .cards-action-primary:hover {
+  color: var(--site-ink);
+  background: #e4bd54;
+  box-shadow: 0 9px 22px rgba(0, 46, 138, .15);
+  transform: translateY(-2px);
+}
+
+.site-page-system .cards-page .cards-action-secondary {
+  border: 1px solid rgba(0, 46, 138, .35);
+  color: var(--site-blue);
+  background: #fff;
+}
+
+.site-page-system .cards-page .cards-action-secondary:hover {
+  border-color: var(--site-blue);
+  color: #fff;
+  background: var(--site-blue);
+  transform: translateY(-2px);
+}
+
+.site-page-system .cards-page .cards-benefits .grid > div > div {
+  border: 1px solid rgba(0, 46, 138, .07);
+  background: linear-gradient(145deg, #f8fafc, #f1f5fb);
+}
+
+.site-page-system .cards-page .cards-benefits svg {
+  color: var(--site-blue);
+}
+
+.site-page-system .cards-page .cards-cta a:first-child {
+  color: var(--site-ink);
+  background: var(--site-gold);
+}
+
+.site-page-system .cards-page .cards-cta a:last-child {
+  border-color: var(--site-blue);
+  color: var(--site-blue);
+}
+
+.site-page-system .news-detail-card {
+  border-radius: 26px;
+  box-shadow: 0 18px 50px rgba(17, 37, 74, .1);
+}
+
+.site-page-system .create-account-page .account-form {
+  border-radius: 26px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 20px 56px rgba(17, 37, 74, .085);
+}
+
+.site-page-system .create-account-page .account-next-steps > div {
+  border-color: var(--site-border);
+  border-radius: 20px;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.site-page-system .create-account-page .account-next-steps > div:hover {
+  border-color: rgba(212, 167, 53, .65);
+  box-shadow: 0 15px 32px rgba(17, 37, 74, .1);
+  transform: translateY(-4px);
+}
+
+@media (max-width: 640px) {
+  .site-page-system :is(
+    .services-card,
+    .branch-card,
+    .about-principle-card,
+    .about-why-card,
+    .branch-detail-service,
+    .branch-detail-why-card,
+    .branch-detail-related-card,
+    .service-detail-related-card,
+    .contact-info-card,
+    .contact-quick-card,
+    .news-card,
+    .cards-product
+  ) {
+    border-radius: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-page-system :is(
+    .services-page,
+    .branches-page,
+    .branch-detail-page,
+    .create-account-page,
+    .service-detail-page,
+    .about-page,
+    .contact-page,
+    .latest-news-page,
+    .news-detail-page,
+    .cards-page,
+    .careers-page
+  ),
+  .site-page-system :is(
+    .services-page,
+    .branches-page,
+    .branch-detail-page,
+    .create-account-page,
+    .service-detail-page,
+    .about-page,
+    .contact-page,
+    .latest-news-page,
+    .news-detail-page,
+    .cards-page,
+    .careers-page
+  ) *,
+  .site-page-system :is(
+    .services-page,
+    .branches-page,
+    .branch-detail-page,
+    .create-account-page,
+    .service-detail-page,
+    .about-page,
+    .contact-page,
+    .latest-news-page,
+    .news-detail-page,
+    .cards-page,
+    .careers-page
+  ) *::before,
+  .site-page-system :is(
+    .services-page,
+    .branches-page,
+    .branch-detail-page,
+    .create-account-page,
+    .service-detail-page,
+    .about-page,
+    .contact-page,
+    .latest-news-page,
+    .news-detail-page,
+    .cards-page,
+    .careers-page
+  ) *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

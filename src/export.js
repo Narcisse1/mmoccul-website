@@ -15,16 +15,12 @@ import project3 from  '../src/assets/project3.jpg'
 import project4 from  '../src/assets/project4.jpg'
 import newsImage1 from './assets/assets2/1774855672518.jpg'
 import newsImage2 from './assets/assets2/1774855672572.jpg'
-import newsImage3 from './assets/assets2/1774855672659.jpg'
 import salaryProcessingImg from './assets/assets2/1774855672751.jpg'
 import moneyTransfersImg from './assets/assets2/1774855672791.jpg'
 import newsImage4 from './assets/assets2/1774855672707.jpg'
 import newsImage5 from './assets/assets2/1774855672751.jpg'
 import newsImage6 from './assets/assets2/1774855672791.jpg'
-import newsImage7 from './assets/assets2/1774855672833.jpg'
-import newsImage8 from './assets/assets2/1774855672879.jpg'
 import mmocculAgm from './assets/assets3/mmoccul-agm.png'
-import awardImg from './assets/assets3/award.jpeg'
 
 export const services = [
   {
@@ -352,26 +348,50 @@ export const news = [
   {
     id: 1,
     img: newsImage1,
-    date: 'July 6, 2026',
+    date: 'October 2026',
     category: 'Expansion',
-    title: "MMOCCUL's New Branch Opening in Damas",
-    para: 'MMOCCUL is excited to announce the grand opening of our newest branch in Damas, extending our trusted financial services to more communities across Cameroon.',
+    title: 'MMOCCUL Continues Expansion with New Branch Developments',
+    para: 'MMOCCUL is expanding its network across Cameroon to bring reliable financial services closer to more members.',
   },
   {
     id: 2,
-    img: awardImg,
-    date: 'July 5, 2026',
-    category: 'Award',
-    title: 'Mmockmbie Credit Union Named Best Customer Service Microfinance Establishment of the Season',
-    para: 'We are honored to have been recognized as the Best Customer Service Microfinance Establishment of the Season, a testament to our commitment to member satisfaction.',
+    img: newsImage2,
+    date: 'October 2026',
+    category: 'Digital Banking',
+    title: 'Strengthening Digital Banking for Our Members',
+    para: 'Discover how the MMOCCUL mobile app and digital services are making banking easier, faster, and more secure.',
   },
   {
     id: 3,
     img: mmocculAgm,
-    date: 'July 4, 2026',
-    category: 'Achievement',
-    title: 'MMOCCUL Reaches 16,000 Members Milestone',
-    para: 'Our cooperative has grown to 16,000 active members, reflecting the continued trust and confidence Cameroonians place in MMOCCUL for their financial needs.',
+    date: 'October 2026',
+    category: 'Company News',
+    title: 'Celebrating 10 Years of Member-Focused Growth',
+    para: 'From 14 members in 2016 to over 26,000 members today — here’s how far we’ve come together.',
+  },
+  {
+    id: 4,
+    img: newsImage4,
+    date: 'October 2026',
+    category: 'Guide',
+    title: 'How to Open an Account with MMOCCUL',
+    para: 'A simple step-by-step guide to becoming a member and starting your savings or loan journey with us.',
+  },
+  {
+    id: 5,
+    img: newsImage5,
+    date: 'October 2026',
+    category: 'Financial Tips',
+    title: 'Tips for Building a Strong Savings Habit',
+    para: 'Practical advice to help members save consistently and achieve their financial goals.',
+  },
+  {
+    id: 6,
+    img: newsImage6,
+    date: 'October 2026',
+    category: 'Impact',
+    title: 'MMOCCUL Supports Farmers and Small Businesses',
+    para: 'Learn how our business and agricultural loan solutions are helping members grow.',
   },
 ]
 

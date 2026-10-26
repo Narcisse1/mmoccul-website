@@ -1,351 +1,240 @@
-import React, { useEffect } from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { services } from '../export'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
 import {
-  MdSecurity,
-  MdSpeed,
-  MdSupportAgent,
-  MdVerifiedUser,
-} from 'react-icons/md'
-
-import {
-  FaHandshake,
-  FaChartBar,
-  FaArrowRight,
-} from 'react-icons/fa'
-
-import { Footer } from '../sections/Footer'
+  ArrowRight,
+  ArrowUpRight,
+  Banknote,
+  Check,
+  CreditCard,
+  FileCheck2,
+  Landmark,
+  MapPin,
+  PiggyBank,
+  ShieldCheck,
+  Smartphone,
+  Users,
+  Wallet,
+  Zap,
+} from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 import { Header } from '../sections/Header'
+import { Footer } from '../sections/Footer'
+import { useHeroParallax } from '../hooks/useHeroParallax'
+import { usePointerAtmosphere } from '../hooks/usePointerAtmosphere'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+import { servicePages } from '../data/servicePages'
+import servicesHero from '../assets/assets3/beautiful.jpg'
+import debitCardImage from '../assets/assets4/Blue Bank Card Mockup.png'
+import './ServicesPage.css'
 
-import backgroundImage from '../assets/assets3/beautiful.jpg'
-import commitmentBg from '../assets/assets2/1774855672707.jpg'
+const serviceLabels = {
+  'savings-accounts': 'Build a savings habit',
+  'personal-loans': 'Support for personal goals',
+  'business-loans': 'Capital for your next step',
+  'mobile-banking': 'Bank from wherever you are',
+  'money-transfer': 'Move money with confidence',
+  'salary-accounts': 'A simpler way to get paid',
+  'fixed-deposits': 'Plan for long-term goals',
+  'bill-payments': 'Everyday payments, made easier',
+}
+
+const serviceCards = [
+  ...servicePages.map((service) => ({
+    ...service,
+    detail: `/services/${service.slug}`,
+    label: serviceLabels[service.slug],
+  })),
+  {
+    title: 'ATM & VISA Cards',
+    description: 'Withdraw cash and make payments locally and internationally with your MMOCCUL VISA debit card.',
+    icon: CreditCard,
+    image: debitCardImage,
+    detail: '/cards',
+    label: 'Convenience for everyday spending',
+    imageFit: 'contain',
+  },
+]
+
+const advantages = [
+  { title: 'Competitive interest rates', icon: Banknote },
+  { title: 'Fast loan processing', icon: Zap },
+  { title: 'Flexible repayment plans', icon: Wallet },
+  { title: 'Member-owned institution', icon: PiggyBank },
+  { title: 'COBAC regulated & secure', icon: ShieldCheck },
+  { title: 'Growing digital solutions', icon: Smartphone },
+  { title: 'Transparent fees', icon: Check },
+  { title: 'Nationwide branch network', icon: MapPin },
+]
+
+const accessSteps = [
+  {
+    number: '01',
+    title: 'Become a Member',
+    description: 'Start your cooperative journey and get guidance on membership.',
+    icon: Users,
+  },
+  {
+    number: '02',
+    title: 'Choose a Service',
+    description: 'Explore the savings, financing, and payment options that fit your needs.',
+    icon: Landmark,
+  },
+  {
+    number: '03',
+    title: 'Complete Requirements',
+    description: 'Our team will explain the relevant documents and next steps.',
+    icon: FileCheck2,
+  },
+  {
+    number: '04',
+    title: 'Start Benefiting',
+    description: 'Access your selected service with support from MMOCCUL.',
+    icon: ArrowRight,
+  },
+]
+
+const ServicesHeading = ({ eyebrow, title, description, light = false }) => (
+  <div className={`services-heading services-reveal${light ? ' services-heading--light' : ''}`}>
+    <span className="services-heading__eyebrow">{eyebrow}</span>
+    <h2>{title}</h2>
+    {description && <p>{description}</p>}
+  </div>
+)
 
 export const ServicesPage = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-    })
-  }, [])
-
-  const serviceCategories = services
-
-  const features = [
-    {
-      icon: MdSecurity,
-      title: 'Security & Trust',
-      desc: 'Advanced protection systems ensuring safe and secure banking.',
-    },
-    {
-      icon: MdSpeed,
-      title: 'Fast Processing',
-      desc: 'Efficient digital systems designed for speed and convenience.',
-    },
-    {
-      icon: MdSupportAgent,
-      title: 'Dedicated Support',
-      desc: 'Professional support tailored to your financial journey.',
-    },
-    {
-      icon: FaHandshake,
-      title: 'Member Ownership',
-      desc: 'A cooperative structure focused entirely on member prosperity.',
-    },
-    {
-      icon: MdVerifiedUser,
-      title: 'Regulatory Excellence',
-      desc: 'Accredited and compliant with leading financial institutions.',
-    },
-    {
-      icon: FaChartBar,
-      title: 'Growth Focused',
-      desc: 'Solutions designed to help individuals and businesses grow.',
-    },
-  ]
+  const pageRef = useRef(null)
+  useHeroParallax(pageRef)
+  usePointerAtmosphere(pageRef)
+  useRevealOnScroll(pageRef, '.services-reveal')
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] overflow-hidden">
+    <div className="services-page" ref={pageRef}>
       <Header />
-
-      {/* ================= HERO ================= */}
-      <section className="relative h-[50vh] min-h-[480px] overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <img
-            src={backgroundImage}
-            alt="MMOCCUL Services"
-            className="w-full h-full object-cover"
-          />
-
-          {/* lighter overlay so image is visible */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#021526]/80 via-[#03213f]/55 to-[#0b3b66]/45"></div>
-
-          {/* subtle glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.14),transparent_32%)]"></div>
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.14),transparent_32%)]"></div>
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-3 bg-white/10 border border-white/20 backdrop-blur-md px-5 py-2 rounded-full mb-7">
-                <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-
-                <span className="text-white/90 uppercase tracking-[0.24em] text-[11px] font-semibold">
-                  MMOCCUL SERVICES
-                </span>
-              </div>
-
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-white mb-6">
-                Modern Banking
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-blue-200">
-                  Designed For Growth
-                </span>
-              </h1>
-
-              <p className="text-base md:text-lg leading-relaxed text-blue-100/90 max-w-xl mb-9 font-light">
-                Professional financial solutions tailored to help you grow,
-                invest, save and succeed with confidence.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white px-7 py-3.5 rounded-full font-semibold shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  Explore Services
-
-                  <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <Link
-                  to="/branches"
-                  className="inline-flex items-center justify-center border border-white/30 hover:border-sky-300 hover:bg-white/10 backdrop-blur-md text-white px-7 py-3.5 rounded-full font-semibold transition-all duration-300"
-                >
-                  Find a Branch
-                </Link>
-              </div>
+      <main>
+        <section className="services-hero" aria-labelledby="services-hero-title">
+          <div className="services-hero__image" style={{ backgroundImage: `url(${servicesHero})` }} aria-hidden="true" />
+          <div className="services-hero__veil" aria-hidden="true" />
+          <div className="services-shell services-hero__content">
+            <span className="services-kicker services-kicker--hero"><i /> Our Services</span>
+            <h1 id="services-hero-title">Complete Financial<br /><em>Solutions</em></h1>
+            <p>Everything you need to save, borrow, transfer, and grow — designed for individuals, salary workers, and businesses.</p>
+            <div className="services-hero__trust">
+              <span><ShieldCheck size={16} /> COBAC Licensed</span>
+              <i />
+              <span><PiggyBank size={16} /> Member-Owned</span>
+              <i />
+              <span><Check size={16} /> Competitive Rates</span>
             </div>
           </div>
-        </div>
+          <div className="services-hero__bottom" aria-hidden="true" />
+        </section>
 
-
-      </section>
-
-      {/* ================= SERVICES ================= */}
-{serviceCategories.map((category, catIndex) => (
-  <section
-    key={catIndex}
-    className="relative py-12 lg:py-16"
-  >
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            {/* Heading */}
-            <div
-              data-aos="fade-up"
-              className="text-center max-w-2xl mx-auto mb-14"
-            >
-              <div className="inline-flex items-center gap-3 bg-white border border-slate-200 px-5 py-2 rounded-full shadow-sm mb-5">
-                <category.icon className="text-sky-600 text-lg" />
-
-                <span className="uppercase tracking-[0.18em] text-[11px] font-semibold text-slate-700">
-                  {category.category}
-                </span>
-              </div>
-
-<h2 className="font-serif text-2xl lg:text-3xl text-slate-900 font-bold mb-2">
-{category.category} Solutions
-</h2>
-
-              <p className="text-slate-600 text-base leading-relaxed">
-                Professionally tailored financial solutions crafted around your
-                ambitions and future.
-              </p>
+        <section className="services-intro">
+          <div className="services-shell services-intro__inner services-reveal">
+            <span className="services-intro__mark"><Landmark size={24} /></span>
+            <div>
+              <span className="services-kicker">Financial services, centered on you</span>
+              <p>At MMOCCUL we offer a full range of financial services tailored to the real needs of our members. From flexible savings and fast loans to mobile banking and money transfers, we provide reliable solutions that help you achieve your goals.</p>
             </div>
+            <Link to="/contact" className="services-intro__link">Talk to our team <ArrowUpRight size={15} /></Link>
+          </div>
+        </section>
 
-             {/* Cards */}
-             <div className="grid lg:grid-cols-3 gap-6">
-              {category.services.map((service, i) => (
-                <div
-                  key={service.id}
-                  data-aos="fade-up"
-                  data-aos-delay={i * 100}
-                   className="group relative bg-white overflow-hidden border border-slate-200 hover:border-sky-200 shadow-sm hover:shadow-2xl transition-all duration-500"
-                >
-                    {/* Image */}
-                    <div className="relative h-[160px] overflow-hidden rounded-t-[50%]">
-                      <div className="absolute inset-0">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#021526]/75 via-[#021526]/10 to-transparent"></div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-4 lg:p-6 rounded-b-[20px]">
-                    <div className="flex items-start justify-between gap-5 mb-4">
-                      <h3 className="text-xl lg:text-2xl font-serif font-bold text-slate-900 leading-snug">
-                        {service.title}
-                      </h3>
-
-                      <div className="text-right shrink-0">
-                        <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">
-                          Duration
-                        </div>
-
-                        <div className="font-semibold text-sm text-slate-700">
-                          {service.duration}
-                        </div>
-                      </div>
-                    </div>
-
-<p className="text-slate-600 leading-relaxed mb-4 text-[13px]">
-{service.description}
-</p>
-
-                    {/* Footer */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-5 border-t border-slate-100">
-                      <div>
-                        <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">
-                          Rate
-                        </div>
-
-                        <div className="text-xl font-bold text-sky-700">
-                          {service.rate}
-                        </div>
-                      </div>
-
-                      <div className="flex gap-3">
-<Link
-                           to={`/services/${service.id}`}
-                           className="bg-gradient-to-r from-sky-500 to-blue-600 text-white px-5 py-2.5 rounded-md text-sm font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-                         >
-                           Learn More
-                         </Link>
-
-                         <Link
-                           to="/contact"
-                           className="border border-slate-300 hover:border-sky-400 hover:text-sky-700 text-slate-700 px-5 py-2.5 rounded-md text-sm font-semibold transition-all duration-300"
-                         >
-                           Apply
-                         </Link>
-                      </div>
+        <section className="services-catalog services-section" id="service-catalog">
+          <div className="services-shell">
+            <ServicesHeading
+              eyebrow="Services for every stage"
+              title="Find the right service for your goals"
+              description="Explore practical cooperative financial services, built around the needs of members and their communities."
+            />
+            <div className="services-grid">
+              {serviceCards.map(({ title, description, icon: Icon, image, detail, label, imageFit }, index) => (
+                <article className="services-card services-reveal" key={title} style={{ '--services-delay': `${(index % 3) * 65}ms` }}>
+                  <div className={`services-card__image${imageFit ? ` services-card__image--${imageFit}` : ''}`}>
+                    <img src={image} alt={imageFit ? 'MMOCCUL blue ATM and VISA debit card' : ''} loading="lazy" />
+                    <span className="services-card__number">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="services-card__icon"><Icon size={21} /></span>
+                  </div>
+                  <div className="services-card__content">
+                    <span className="services-card__label">{label}</span>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                    <div className="services-card__actions">
+                      <Link to={detail} className="services-card__learn">
+                        Learn more <ArrowRight size={15} />
+                      </Link>
+                      <Link to="/contact" className="services-card__ask" aria-label={`Enquire about ${title}`}>Enquire</Link>
                     </div>
                   </div>
-
-                  {/* glow */}
-                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-sky-100 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
-      ))}
 
-      {/* ================= WHY CHOOSE US ================= */}
-      <section className="relative py-24 overflow-hidden bg-white">
-        <div className="absolute inset-0">
-          <img
-            src={commitmentBg}
-            alt=""
-            className="w-full h-full object-cover opacity-[0.03]"
-          />
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
-          <div
-            data-aos="fade-up"
-            className="text-center max-w-2xl mx-auto mb-16"
-          >
-            <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-100 px-5 py-2 rounded-full mb-5">
-              <span className="w-2 h-2 rounded-full bg-sky-500"></span>
-
-              <span className="uppercase tracking-[0.18em] text-[11px] font-semibold text-sky-700">
-                Why Choose MMOCCUL
-              </span>
-            </div>
-
-            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-slate-900 mb-5">
-              Excellence In Every Experience
-            </h2>
-
-            <p className="text-base text-slate-600 leading-relaxed">
-              Combining innovation, professionalism and member-centered banking
-              to deliver exceptional financial experiences.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, i) => (
-              <div
-                key={i}
-                data-aos="fade-up"
-                data-aos-delay={i * 100}
-                className="group bg-[#f8fafc] border border-slate-200 rounded-[26px] p-7 hover:bg-white hover:shadow-xl hover:border-sky-200 transition-all duration-500"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-700 flex items-center justify-center mb-6 shadow-lg">
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-
-                <h3 className="text-xl font-serif font-bold text-slate-900 mb-3 group-hover:text-sky-700 transition-colors">
-                  {feature.title}
-                </h3>
-
-                <p className="text-slate-600 leading-relaxed text-[15px]">
-                  {feature.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-       {/* ================= CTA ================= */}
-       <section className="relative py-16 overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src={backgroundImage}
-              alt=""
-              className="w-full h-full object-cover"
+        <section className="services-advantage services-section">
+          <div className="services-advantage__glow services-advantage__glow--one" aria-hidden="true" />
+          <div className="services-advantage__glow services-advantage__glow--two" aria-hidden="true" />
+          <div className="services-shell services-advantage__inner">
+            <ServicesHeading
+              eyebrow="The MMOCCUL advantage"
+              title="Service grounded in cooperative values"
+              description="A member-first approach and trusted financial services help you move forward with confidence."
+              light
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#021526]/90 via-[#03213f]/80 to-[#0b3b66]/70"></div>
+            <div className="services-advantage__grid">
+              {advantages.map(({ title, icon: Icon }, index) => (
+                <div className="services-advantage__item services-reveal" key={title} style={{ '--services-delay': `${(index % 4) * 55}ms` }}>
+                  <span><Icon size={19} /></span>
+                  <strong>{title}</strong>
+                  <Check className="services-advantage__check" size={15} />
+                </div>
+              ))}
+            </div>
+            <div className="services-advantage__foot"><ShieldCheck size={15} /> Category 1 Microfinance Institution licensed by COBAC</div>
           </div>
-         <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
-           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4">
-             <span className="w-2 h-2 rounded-full bg-sky-400"></span>
-             <span className="uppercase tracking-[0.18em] text-[10px] font-semibold text-white">Begin Today</span>
-           </div>
-           <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white leading-tight mb-2">
-             Let’s Build Your Financial Future
-           </h2>
-           <p className="text-sm lg:text-base text-blue-100/80 leading-relaxed max-w-3xl mx-auto mb-4">
-             Experience professional financial services built on trust, innovation and long-term prosperity.
-           </p>
-           <div className="flex flex-wrap justify-center gap-3">
-             <Link
-               to="/contact"
-               className="bg-gradient-to-r from-sky-500 to-blue-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-xl hover:scale-105 transition-all duration-300"
-             >
-               Schedule Consultation
-             </Link>
-             <Link
-               to="/branches"
-               className="border border-white/30 hover:border-sky-300 hover:bg-white/10 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300"
-             >
-               Visit a Branch
-             </Link>
-           </div>
-         </div>
-       </section>
+        </section>
 
+        <section className="services-access services-section">
+          <div className="services-shell">
+            <ServicesHeading
+              eyebrow="Getting started"
+              title="Four steps to access our services"
+              description="Our team is here to guide you from membership through to using the services that suit you."
+            />
+            <div className="services-steps">
+              {accessSteps.map(({ number, title, description, icon: Icon }, index) => (
+                <article className="services-step services-reveal" key={number} style={{ '--services-delay': `${index * 75}ms` }}>
+                  <span className="services-step__number">{number}</span>
+                  <span className="services-step__icon"><Icon size={21} /></span>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  {index < accessSteps.length - 1 && <ArrowRight className="services-step__connector" size={18} aria-hidden="true" />}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="services-cta">
+          <div className="services-cta__pattern" aria-hidden="true" />
+          <div className="services-shell services-cta__inner services-reveal">
+            <span className="services-kicker services-kicker--hero"><i /> Move forward with MMOCCUL</span>
+            <h2>Ready to get started?</h2>
+            <p>Open an account or apply for a service today and experience reliable, member-focused banking.</p>
+            <div className="services-cta__actions">
+              <Link className="services-button services-button--gold" data-pointer-effect="magnetic" to="/create-account">Become a Member <ArrowRight size={16} /></Link>
+              <Link className="services-button services-button--outline" to="/services/1">Apply for a Loan <Banknote size={16} /></Link>
+              <Link className="services-cta__link" to="/contact">Contact Us <ArrowUpRight size={15} /></Link>
+              <Link className="services-cta__link" to="/branches">Find a Branch <MapPin size={15} /></Link>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
+      <a className="services-whatsapp" href="https://wa.me/237680485488" target="_blank" rel="noopener noreferrer" aria-label="Chat with MMOCCUL on WhatsApp">
+        <FaWhatsapp size={23} />
+      </a>
     </div>
   )
 }
